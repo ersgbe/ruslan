@@ -1,0 +1,2333 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>СтройПрофи — строительство домов под ключ, кровля, полы, фасад в Москве и Московской области</title>
+<meta name="description" content="Строительная бригада с опытом более 10 лет: строительство домов под ключ, кровельные, фасадные и отделочные работы в Москве и Московской области. Бесплатный замер, договор, гарантия. Рейтинг 4.8 — 89 отзывов.">
+<link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<!-- Central phone config: update here to change phone across the site -->
+<script>
+  /*
+    Установите здесь актуальный номер: DISPLAY — формат для пользователя,
+    LINK — для href в формате tel:+71234567890 (цифры без пробелов и скобок, с +)
+  */
+  window.SITE_PHONE = {
+    DISPLAY: '+7 967 275 63 33',
+    LINK: '+79672756333'
+  };
+  document.addEventListener('DOMContentLoaded', function(){
+    var phone = window.SITE_PHONE;
+    if(!phone) return;
+
+    // Update all anchors with tel: href
+    document.querySelectorAll('a[href^="tel:"]').forEach(function(a){
+      a.setAttribute('href', 'tel:' + phone.LINK);
+      // if anchor contains only text (no children except small), replace number part
+      var small = a.querySelector('small');
+      if(small){
+        a.innerHTML = phone.DISPLAY + small.outerHTML;
+      } else {
+        a.textContent = phone.DISPLAY;
+      }
+    });
+
+    // Update elements with class .phone (non-anchor, or extra logos)
+    document.querySelectorAll('.phone').forEach(function(el){
+      var small = el.querySelector('small');
+      if(el.tagName.toLowerCase() === 'a'){
+        el.setAttribute('href','tel:' + phone.LINK);
+      }
+      if(small){
+        // keep small text
+        var smallHTML = small.outerHTML;
+        el.innerHTML = phone.DISPLAY + smallHTML;
+      } else {
+        el.textContent = phone.DISPLAY;
+      }
+    });
+
+    // Update placeholder on tel inputs
+    document.querySelectorAll('input[type="tel"]').forEach(function(inp){
+      inp.setAttribute('placeholder', phone.DISPLAY);
+    });
+  });
+</script>
+<style>
+:root{
+  /* ---- palette inspired by modulhouse.org: cool light base + strong construction accent ---- */
+  --sand:        #FBFCFD;   /* very light neutral background */
+  --sand-deep:   #F3F4F6;   /* card / surface */
+  --graphite:    #0F1724;   /* deep slate for headings and accents */
+  --clay:        #D35400;   /* construction orange accent */
+  --olive:       #475569;   /* cool muted blue-gray */
+  --stone:       #6B7280;   /* secondary text / muted */
+
+  --ink-70: #374151;
+  --border: #E6E9EE;
+  --border-strong: #0F1724;
+  --white: #FFFFFF;
+
+  --f-display: 'Manrope', Arial, sans-serif;
+  --f-body: 'Manrope', Arial, sans-serif;
+  --f-mono: 'IBM Plex Mono', 'Courier New', monospace;
+
+  --s-1:4px; --s-2:8px; --s-3:12px; --s-4:16px; --s-5:20px; --s-6:28px; --s-7:36px; --s-8:48px; --s-9:64px; --s-10:88px;
+  --clay: var(--graphite);
+  --radius: 0;
+  --ease: cubic-bezier(.2,.7,.2,1);
+  --container: 1400px;
+  --edge: clamp(18px, 4vw, 56px);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0; font-family:var(--f-body); color:var(--graphite); background:var(--sand);
+  line-height:1.55; font-weight:400; -webkit-font-smoothing:antialiased;
+}
+img,svg{display:block; max-width:100%;}
+/* Links: visible hover/focus reaction */
+a{color:inherit; text-decoration:none; transition: color .18s var(--ease), transform .12s var(--ease);}
+a:hover, a:focus{color:var(--clay); text-decoration:underline; transform:translateY(-1px);} 
+a:focus-visible{outline:3px solid rgba(168,92,52,0.18); outline-offset:3px;}
+::selection{background:var(--clay); color:var(--white);}
+:focus-visible{outline:2px solid var(--clay); outline-offset:2px;}
+
+.wrap{max-width:var(--container); margin:0 auto; padding:0 var(--edge);}
+section{position:relative;}
+.pad-lg{padding: clamp(48px, 6vw, 96px) 0;}
+.pad-md{padding: clamp(36px, 4.5vw, 64px) 0;}
+.pad-sm{padding: clamp(24px, 3vw, 40px) 0;}
+.divider{border-top:1px solid var(--border);}
+.dark{background:var(--graphite); color:var(--sand);}
+.dark .muted{color:#A69E8B;}
+
+h1,h2,h3,h4{font-family:var(--f-display); font-weight:400; margin:0; letter-spacing:-0.01em; color:inherit;}
+p{margin:0;}
+
+.mono{font-family:var(--f-mono);}
+.eyebrow{
+  display:flex; align-items:center; gap:10px; font-family:var(--f-mono); font-size:11px; font-weight:500;
+  letter-spacing:0.08em; text-transform:uppercase; color:var(--clay); margin-bottom:var(--s-4);
+}
+.eyebrow::before{content:""; width:22px; height:1px; background:var(--clay);}
+.dark .eyebrow{color:#D8A583;}
+.dark .eyebrow::before{background:#D8A583;}
+
+h2.section-title{ font-size:clamp(26px, 3vw, 42px); font-weight:300; line-height:1.08; max-width:16ch;}
+.lead{font-size:15.5px; color:var(--ink-70); max-width:52ch; line-height:1.7; font-weight:400;}
+.dark .lead{color:#D8CFAF;}
+
+/* ---- buttons ---- */
+/* ---- buttons ---- */
+.btn{
+  display:inline-flex; align-items:center; gap:10px; background:var(--clay); color:var(--white);
+  padding:13px 22px; text-decoration:none; font-family:var(--f-mono); font-weight:600; font-size:13px;
+  text-transform:uppercase; letter-spacing:0.06em; border:1px solid transparent; border-radius:var(--radius);
+  cursor:pointer; transition:transform .12s var(--ease);
+}
+.btn:hover{transform:translateY(-2px);} 
+.btn .arrow{transition:transform .25s var(--ease); font-family:var(--f-body);}
+.btn:hover .arrow{transform:translateX(4px);} 
+.btn-outline{background:transparent; color:var(--graphite); border:1px solid var(--border);}
+.btn-outline:hover{background:var(--graphite); color:var(--white); border-color:var(--graphite);}
+.btn-invert{background:var(--sand); color:var(--graphite); border-color:var(--sand);}
+.btn-invert:hover{background:var(--clay); color:var(--white); border-color:var(--clay);}
+.dark .btn-outline{color:var(--sand); border-color:rgba(255,255,255,0.08);} 
+.dark .btn-outline:hover{background:var(--sand); color:var(--graphite); border-color:var(--sand);} 
+.btn:disabled{opacity:.5; cursor:not-allowed;}
+
+/* Base button reset for unstyled buttons: consistent font, padding, radius */
+button{
+  font-family:var(--f-mono);
+  font-size:13px;
+  padding:8px 12px;
+  border-radius:var(--radius);
+  border:1px solid transparent;
+  background:transparent;
+  color:inherit;
+  cursor:pointer;
+  line-height:1;
+}
+
+.text-link{
+  display:inline-flex; align-items:center; gap:8px; font-family:var(--f-mono); font-size:12px; font-weight:600;
+  text-transform:uppercase; letter-spacing:0.06em; text-decoration:none; color:var(--graphite);
+  border-bottom:2px solid transparent; padding-bottom:4px; transition:color .18s var(--ease), border-color .18s var(--ease), transform .12s var(--ease);
+}
+.text-link:hover{color:var(--clay); border-color:var(--clay); transform:translateY(-2px);}
+
+/* ---- placeholders ---- */
+.ph{
+  background: linear-gradient(180deg, var(--white), var(--sand-deep));
+  border:1px solid var(--border); position:relative; overflow:hidden;
+}
+.ph-photo{aspect-ratio:4/5;} .ph-wide{aspect-ratio:16/9;} .ph-square{aspect-ratio:1/1;} .ph-video{aspect-ratio:16/10;}
+.ph .tag-inner{position:absolute; inset:0; display:flex; align-items:flex-end;}
+.ph .ph-label{ padding:12px 14px; color:var(--stone); font-family:var(--f-mono); font-size:11px; text-transform:uppercase; letter-spacing:0.06em;}
+.ph-video::after{content:""; position:absolute; inset:0; margin:auto; width:52px; height:52px; border-radius:0; background:rgba(15,23,36,0.00); display:flex; align-items:center; justify-content:center;}
+.ph-video::before{content:""; position:absolute; left:50%; top:50%; transform:translate(-40%,-50%); width:0; height:0; border-top:9px solid transparent; border-bottom:9px solid transparent; border-left:14px solid var(--graphite); z-index:1;}
+.ph-avatar{width:42px; height:42px; padding:0; flex-shrink:0; border:1px solid var(--border); border-radius:0;}
+
+/* corner spec tag over an image */
+.spec-tag{position:absolute; z-index:2; font-family:var(--f-mono); font-size:11px; letter-spacing:0.06em; text-transform:uppercase; color:var(--white); background:var(--graphite); padding:10px 14px; display:flex; flex-direction:column; gap:2px; border-radius:0;}
+.spec-tag b{font-family:var(--f-mono); font-weight:500; font-size:12.5px; color:var(--white);}
+.spec-tag span{color:#B7AF9A; font-size:10px;}
+
+.reveal{opacity:0; transform:translateY(14px); transition:opacity .6s var(--ease), transform .6s var(--ease);}
+.reveal.in{opacity:1; transform:translateY(0);}
+
+/* ============ HEADER ============ */
+header{position:fixed; top:0; left:0; right:0; z-index:50; background:transparent; border-bottom:1px solid transparent; transition:background .3s var(--ease), border-color .3s var(--ease);}
+header.solid{background:rgba(255,255,255,0.86); backdrop-filter:blur(6px); border-color:var(--border);}
+.header-inner{display:flex; align-items:center; justify-content:space-between; padding:18px var(--edge); min-height:64px;}
+.logo{font-family:var(--f-display); font-weight:500; font-size:16px; letter-spacing:0.01em; text-decoration:none; display:flex; align-items:baseline; gap:8px;}
+.logo .mark{font-family:var(--f-mono); font-weight:500; font-size:14px; border:1px solid var(--graphite); padding:3px 6px;}
+.logo span{font-family:var(--f-mono); font-weight:400; font-size:10px; color:var(--stone); letter-spacing:0.02em; text-transform:uppercase;}
+nav.main-nav ul{list-style:none; display:flex; gap:30px; margin:0; padding:0; font-size:13px; font-weight:400;}
+nav.main-nav a{text-decoration:none; position:relative; padding-bottom:3px;}
+nav.main-nav a::after{content:""; position:absolute; left:0; right:100%; bottom:0; height:1px; background:var(--graphite); transition:right .25s var(--ease);}
+nav.main-nav a:hover::after{right:0;}
+.header-cta{display:flex; align-items:center; gap:20px;}
+.phone{font-family:var(--f-mono); font-weight:500; font-size:13px; text-decoration:none; display:flex; flex-direction:column; align-items:flex-end; line-height:1.3;}
+.phone small{font-weight:400; font-size:10px; color:var(--stone); font-family:var(--f-body);}
+.menu-trigger{display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:6px;}
+.menu-trigger span{width:20px; height:1px; background:var(--graphite);}
+
+.mobile-menu{position:fixed; inset:0; background:var(--sand); z-index:60; display:flex; flex-direction:column; justify-content:space-between; padding: var(--s-6) calc(var(--edge) + 8px); transform:translateY(-100%); transition:transform .35s var(--ease);}
+.mobile-menu.open{transform:translateY(0);}
+.mobile-menu-top{display:flex; justify-content:space-between; align-items:center;}
+.mobile-menu ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:18px;}
+.mobile-menu a{font-family:var(--f-display); font-size:28px; font-weight:300; text-decoration:none;}
+.mobile-menu-close{background:none; border:1px solid var(--border); width:34px; height:34px; cursor:pointer; font-size:15px;}
+.mobile-menu-foot{font-size:13px; color:var(--stone);}
+
+/* ============ HERO ============ */
+.hero{padding-top: clamp(96px, 14vw, 140px); padding-bottom:0; border-bottom:1px solid var(--border);}
+.hero-grid{display:grid; grid-template-columns: 0.95fr 1.05fr; gap: var(--s-9); align-items:end; padding-bottom:var(--s-8);}
+.hero-copy h1{font-size: clamp(34px, 4.6vw, 62px); font-weight:300; line-height:1.05; max-width:14ch; margin-bottom:var(--s-5);}
+.hero-copy .lead{margin-bottom:var(--s-6);}
+.hero-btns{display:flex; gap:12px; flex-wrap:wrap; margin-bottom:var(--s-7);}
+.checklist{list-style:none; padding:0; margin:0; display:grid; gap:8px;}
+.checklist li{padding-left:16px; position:relative; font-size:13px; color:var(--ink-70); font-family:var(--f-mono);}
+.checklist li::before{content:""; position:absolute; left:0; top:8px; width:7px; height:1px; background:var(--clay);}
+.hero-visual{position:relative;}
+.hero-visual .ph-photo{aspect-ratio:1/1; max-height:420px; width:100%;}
+
+.stat-band{border-top:1px solid var(--border); padding: var(--s-6) 0; display:grid; grid-template-columns:repeat(3,1fr);}
+.stat-band .stat{padding-right:var(--s-5); border-right:1px solid var(--border);}
+.stat-band .stat:last-child{border-right:none;}
+.stat b{font-family:var(--f-display); font-size:clamp(26px,3vw,40px); font-weight:300; display:block; line-height:1;}
+.stat span{font-family:var(--f-mono); font-size:10.5px; color:var(--stone); text-transform:uppercase; letter-spacing:0.05em; display:block; margin-top:6px;}
+
+/* ============ CALCULATOR ============ */
+.calc-grid-outer{display:grid; grid-template-columns:0.8fr 1.2fr; gap:var(--s-9); align-items:start;}
+.calc-head{position:sticky; top:120px;}
+.calc-box{border:1px solid var(--border-strong); padding: var(--s-6); background:var(--white);}
+.calc-note{font-family:var(--f-mono); font-size:11px; color:var(--stone); margin-bottom:var(--s-5); padding-bottom:var(--s-5); border-bottom:1px solid var(--border); text-transform:uppercase; letter-spacing:0.03em;}
+.svc-list{list-style:none; margin:0; padding:0;}
+.calc-item{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 2px; border-bottom:1px solid var(--border); font-size:14px; cursor:pointer;}
+.calc-item:last-child{border-bottom:none;}
+.calc-item .left{display:flex; align-items:center; gap:14px;}
+.calc-item input{width:15px; height:15px; accent-color:var(--graphite); flex-shrink:0;}
+.calc-item .svc-name{font-weight:400; display:block;}
+.calc-item .svc-price{font-size:11.5px; color:var(--stone); font-family:var(--f-mono);}
+.calc-area{margin-top:var(--s-6); max-width:320px;}
+.calc-area label{display:block; font-family:var(--f-mono); font-size:10.5px; text-transform:uppercase; letter-spacing:0.06em; color:var(--stone); margin-bottom:8px;}
+.calc-area input{width:100%; padding:12px 13px; border:1px solid var(--border); background:transparent; font-size:14px; font-family:var(--f-body); border-radius:var(--radius);}
+.calc-area input:focus{border-color:var(--graphite); outline:none;}
+.calc-result{margin-top:var(--s-6); padding: var(--s-5); border:1px solid var(--border-strong); background:var(--graphite); color:var(--sand); font-size:13px; display:none; font-family:var(--f-mono);}
+.calc-result.show{display:block;}
+.calc-result b{font-family:var(--f-display); font-size:24px; font-weight:300; display:block; margin-bottom:6px; font-family:var(--f-mono);}
+.calc-actions{display:flex; gap:12px; margin-top:var(--s-6); flex-wrap:wrap; align-items:center;}
+.calc-contact{display:flex; gap:10px; margin-top:var(--s-5); flex-wrap:wrap;}
+.calc-contact input{padding:12px 13px; border:1px solid var(--border); font-size:14px; flex:1; min-width:170px; font-family:var(--f-body); border-radius:var(--radius); background:transparent;}
+.calc-contact input:focus{border-color:var(--graphite); outline:none;}
+
+/* ============ ABOUT ============ */
+.about-grid{display:grid; grid-template-columns: 0.9fr 1.1fr; gap:var(--s-9); align-items:start;}
+.about-copy p + p{margin-top:var(--s-4);}
+.badges{display:flex; gap:8px; flex-wrap:wrap; margin-top:var(--s-6);}
+.badge{border:1px solid var(--border-strong); font-family:var(--f-mono); font-size:10.5px; padding:8px 12px; text-transform:uppercase; letter-spacing:0.03em; font-weight:400;}
+.about-visual{position:relative;}
+.about-visual .ph-photo{aspect-ratio:1/1; max-height:360px; width:100%; border:1px solid var(--border);}
+
+/* ============ ADVANTAGES ============ */
+.adv-grid{display:grid; grid-template-columns:repeat(3,1fr);}
+.adv-item{border-top:0; padding: var(--s-6); border-right:0; display:flex; flex-direction:column;}
+.adv-item:nth-child(3n){border-right:none;}
+.adv-item h3{font-size:17px; font-weight:400; margin-bottom:8px;}
+.adv-item p{font-size:13px; color:var(--ink-70); line-height:1.6;}
+
+/* ============ PROCESS ============ */
+.steps-row{display:grid; grid-template-columns:repeat(5,1fr);}
+.step{padding: var(--s-6); border-top:0; display:flex; flex-direction:column;}
+.step h3{font-size:13px; font-weight:500; margin-bottom:6px; text-transform:uppercase; letter-spacing:0.02em;}
+.step p{font-size:12px; color:var(--stone); line-height:1.6;}
+
+/* ============ PORTFOLIO ============ */
+.filter-row{display:flex; gap:8px; flex-wrap:wrap; margin-bottom: var(--s-6);}
+.filter-pill{border:1px solid var(--border-strong); padding:9px 16px; font-family:var(--f-mono); font-size:11px; text-transform:uppercase; letter-spacing:0.03em; font-weight:400; cursor:pointer; background:transparent; border-radius:var(--radius); transition:background .2s var(--ease), color .2s var(--ease);}
+.filter-pill.active{background:var(--graphite); color:var(--sand);}
+.filter-pill:hover:not(.active){border-color:var(--graphite);}
+.portfolio-grid{display:grid; grid-template-columns:repeat(3,1fr); gap: var(--s-6) var(--s-5);} 
+.portfolio-item{cursor:default; border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; background:var(--white);} 
+.portfolio-item .ph{aspect-ratio:4/3; overflow:hidden;}
+.portfolio-item .ph img.zoomimg{width:100%; height:100%; object-fit:cover; transition:transform .5s var(--ease);} 
+.portfolio-item:hover .ph img.zoomimg{transform:scale(1.04);} 
+.portfolio-num{position:absolute; top:10px; left:10px; font-family:var(--f-mono); font-size:10.5px; color:var(--white); background:var(--graphite); padding:6px 10px; z-index:2; border-radius:0;}
+.portfolio-info{padding:12px; display:flex; justify-content:space-between; align-items:center; gap:12px; border-top:0; margin-top:0;}
+.portfolio-info h4{font-size:15px; font-weight:600; margin:0 0 0; font-family:var(--f-body);}
+.portfolio-info .cat{font-family:var(--f-mono); font-size:10px; color:var(--stone); text-transform:uppercase; letter-spacing:0.05em;}
+.portfolio-info .price{font-weight:700; font-size:13px; color:var(--clay); font-family:var(--f-mono);}
+.portfolio-item.js-extra{display:none;}
+.portfolio-more{margin-top:var(--s-7); text-align:left;}
+
+/* ============ VIDEO ============ */
+.video-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:var(--s-5);}
+.video-item .ph-video{margin-bottom:8px; overflow:hidden;}
+.video-item .ph-video:hover::after{border-color:var(--clay);}
+.video-item p{font-family:var(--f-mono); font-size:11px; color:var(--stone); margin:0;}
+.video-item.js-hidden{display:none;}
+.video-more{margin-top:var(--s-6);}
+
+/* ============ AREA ============ */
+.area-grid{display:grid; grid-template-columns: 1fr 1fr; gap:var(--s-9); align-items:center;}
+.area-list{list-style:none; padding:0; columns:2; column-gap:var(--s-5); margin:var(--s-6) 0;}
+.area-list li{padding:6px 0; font-family:var(--f-mono); font-size:13px; border-bottom:1px solid var(--border); color:var(--ink-70);}
+.map-ph{aspect-ratio:4/3.3;}
+
+/* ============ REVIEWS ============ */
+.rating-band{display:flex; gap:var(--s-8); margin: var(--s-6) 0 var(--s-7); border-top:1px solid var(--border-strong); border-bottom:1px solid var(--border); padding: var(--s-5) 0;}
+.reviews-carousel{position:relative;}
+.review-pages{position:relative;}
+.review-page{display:none;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:var(--s-5);}
+.review-page.is-active{display:grid;}
+.review-card{border:1px solid var(--border);padding:var(--s-6);display:flex;flex-direction:column;min-width:0;height:100%;background:var(--white);}
+.review-card .quote-mark{font-family:var(--f-mono);font-size:26px;color:var(--border);line-height:1;margin-bottom:var(--s-3);}
+.review-head{display:flex;gap:12px;align-items:center;margin-top:auto;padding-top:var(--s-5);}
+.review-head .stars{font-family:var(--f-mono);font-size:11px;color:var(--stone);}
+.review-name{font-weight:500;font-size:13px;}
+.review-text{font-size:13px;color:var(--ink-70);line-height:1.65;flex-grow:1;}
+.review-meta{font-family:var(--f-mono);font-size:10.5px;color:var(--stone);margin-top:12px;text-transform:uppercase;letter-spacing:.03em;}
+.review-meta a{text-decoration:none;}
+.reviews-controls{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:var(--s-6);}
+.review-nav{width:42px;height:42px;padding:0;border:1px solid var(--border-strong);background:var(--white);color:var(--graphite);font-size:18px;line-height:1;transition:background .18s var(--ease),color .18s var(--ease),transform .12s var(--ease);}
+.review-nav:hover{background:var(--graphite);color:var(--white);transform:translateY(-1px);}
+.review-dots{display:flex;align-items:center;justify-content:center;gap:7px;flex-wrap:wrap;}
+.review-dot{width:7px;height:7px;padding:0;border:0;border-radius:50%;background:var(--border-strong);opacity:.3;}
+.review-dot.is-active{opacity:1;transform:scale(1.25);}
+.review-dot:focus-visible{outline:2px solid var(--graphite);outline-offset:3px;}
+
+/* ============ GUARANTEES ============ */
+.guarantee-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); border:1px solid var(--border); border-radius:0;}
+.guarantee-item{background:var(--sand); padding: var(--s-7) var(--s-6); text-align:left; border-radius:0;}
+.guarantee-item .adv-num{margin-bottom:var(--s-6);}
+.guarantee-item h3{font-size:16px; font-weight:400; margin-bottom:8px;}
+.guarantee-item p{font-size:13px; color:var(--ink-70); line-height:1.6;}
+
+/* ============ FAQ ============ */
+.faq-list{max-width:840px;}
+.faq-item{border-bottom:1px solid var(--border); padding: var(--s-4) 0;}
+.faq-q{display:flex; align-items:center; justify-content:space-between; gap:20px; cursor:pointer; background:none; border:none; width:100%; text-align:left; padding:0; font-family:var(--f-body);}
+.faq-q h3{font-size:15px; font-weight:400; margin:0;}
+.faq-q .plus{font-family:var(--f-mono); font-size:16px; font-weight:400; flex-shrink:0; transition:transform .3s var(--ease); color:var(--clay);}
+.faq-item.open .faq-q .plus{transform:rotate(45deg);}
+.faq-a{max-height:0; overflow:hidden; transition:max-height .35s var(--ease);}
+.faq-item.open .faq-a{max-height:200px;}
+.faq-a p{font-size:13.5px; color:var(--ink-70); padding-top:var(--s-3); line-height:1.65; max-width:60ch;}
+
+/* ============ FINAL CTA ============ */
+.final-cta{overflow:hidden;}
+.final-cta h2{font-size:clamp(28px,3.6vw,50px); font-weight:300; max-width:16ch; line-height:1.08;}
+.final-grid{display:grid; grid-template-columns:1.05fr 0.95fr; gap:var(--s-9); align-items:end;}
+.final-cta .calc-box{border-color:#3A3628; background:transparent;}
+.final-cta .calc-note{border-color:#3A3628; color:#8A8270;}
+.final-cta .calc-contact input{background:transparent; color:var(--sand); border-color:#3A3628;}
+.final-cta .calc-contact input::placeholder{color:#6E6857;}
+
+/* ============ FOOTER ============ */
+footer{padding: var(--s-8) 0 var(--s-6); font-size:13px; color:var(--stone); background:var(--sand);}
+.footer-statement{font-family:var(--f-display); font-size:clamp(26px,4vw,52px); font-weight:300; line-height:1.1; max-width:18ch; margin-bottom:var(--s-8); letter-spacing:-0.01em;}
+.footer-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:var(--s-6); padding-bottom:var(--s-7); border-bottom:1px solid var(--border);}
+.footer-grid h4{color:var(--graphite); font-family:var(--f-mono); font-size:10.5px; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:var(--s-4); font-weight:500;}
+.footer-grid ul{list-style:none; padding:0; margin:0;}
+.footer-grid li{margin-bottom:9px;}
+.footer-grid p{line-height:1.7;}
+.footer-policies{padding-top:var(--s-6);}
+.policy-links{display:flex; gap:20px; flex-wrap:wrap; margin-bottom:var(--s-6);}
+.policy-links button{background:none;border:none;padding:0;font:inherit;font-family:var(--f-mono); font-size:11px;color:var(--stone);text-decoration:underline; text-underline-offset:3px; cursor:pointer;}
+.policy-links button:hover{color:var(--graphite);}
+.footer-bottom{font-family:var(--f-mono); font-size:10.5px; color:var(--stone); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
+
+/* ============ MODAL ============ */
+.modal-overlay{display:none; position:fixed; inset:0; background:rgba(33,29,23,0.72); z-index:100; align-items:center; justify-content:center; padding:20px;}
+.modal-overlay.open{display:flex;}
+.modal-box{background:var(--sand); max-width:640px; width:100%; max-height:80vh; overflow-y:auto; border:1px solid var(--border-strong); padding: var(--s-7);}
+.modal-box h3{margin-top:0; font-size:17px; font-weight:400; margin-bottom:var(--s-5);}
+.modal-box p{font-size:13px; color:var(--ink-70); line-height:1.7; margin-bottom:14px;}
+.modal-close{float:right; background:none; border:1px solid var(--border); width:30px; height:30px; cursor:pointer; font-size:13px; border-radius:var(--radius);}
+.modal-close:hover{border-color:var(--graphite);}
+
+/* ============ COOKIE BANNER ============ */
+.cookie-banner{display:none; position:fixed; left:0; right:0; bottom:0; background:var(--graphite); color:var(--sand); z-index:90; padding: var(--s-5) 0;}
+.cookie-banner.show{display:block;}
+.cookie-inner{display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;}
+.cookie-inner p{margin:0; font-size:12px; color:#D1C6AA; max-width:700px; line-height:1.6;}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:1080px){
+  .hero-grid, .about-grid, .area-grid, .calc-grid-outer, .final-grid{grid-template-columns:1fr;}
+  .calc-head{position:static;}
+  .adv-grid, .portfolio-grid, .video-grid, .guarantee-grid{grid-template-columns:repeat(2,1fr);}
+  .steps-row{grid-template-columns:repeat(3,1fr);}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+  .adv-item:nth-child(3n){border-right:1px solid var(--border);}
+  .adv-item:nth-child(2n){border-right:none;}
+}
+@media (max-width:760px){
+  nav.main-nav{display:none;}
+  .header-cta .phone{display:none;}
+  .header-cta .btn{display:none !important;}
+  .header-inner .logo > span:last-child{display:none !important;}
+  .menu-trigger{display:flex;}
+
+  /* compact wrapper padding */
+  .wrap{padding:0 12px;}
+
+  /* header compact */
+  .header-inner{padding:12px 8px; min-height:56px;}
+  .logo{font-size:14px;}
+  .logo .mark{font-size:12px; padding:2px 5px;}
+
+  /* hero compact */
+  .hero{padding-top:48px; padding-bottom:12px; border-bottom:0;}
+  .hero-grid{gap:var(--s-6);} 
+  .hero-copy h1{font-size:clamp(20px,6vw,34px); margin-bottom:var(--s-3);}
+  .hero-copy .lead{font-size:14px; margin-bottom:var(--s-4);} 
+  .hero-btns{flex-direction:column; gap:10px;}
+  .btn{width:100%; justify-content:center; padding:10px 12px; font-size:13px;}
+
+  /* stats and bands stack */
+  .stat-band{grid-template-columns:1fr; gap:12px; padding:var(--s-5) 0;}
+  .rating-band{display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:12px; border-bottom:0;}
+
+  /* grids to single column */
+  .adv-grid, .portfolio-grid, .video-grid, .guarantee-grid, .steps-row{grid-template-columns:1fr; gap:var(--s-5);} 
+  .review-grid{grid-template-columns:repeat(2, minmax(0, 1fr)); gap:var(--s-4);} 
+
+  /* images constrained for mobile */
+  .ph-photo, .ph-square, .ph-wide{aspect-ratio:1/1; max-height:260px; width:100%;}
+
+  .about-visual .ph-photo{max-height:240px;}
+  .hero-visual .ph-photo{max-height:320px;}
+
+  /* compact cards and lists */
+  .calc-box, .review-card, .guarantee-item, .portfolio-item{padding:var(--s-4);} 
+  .portfolio-info{margin-top:var(--s-3);} 
+  .area-list{columns:1;}
+
+  /* footer stack */
+  .footer-grid{grid-template-columns:1fr; padding-bottom:var(--s-5);} 
+  .footer-statement{font-size:20px;}
+
+  .modal-box{padding:14px;}
+
+  .calc-contact input{min-width:100%;}
+}
+
+/* ============ ДОПОЛНИТЕЛЬНЫЕ ОТСТУПЫ ============ */
+:root{
+  --gap-xs: 8px;
+  --gap-sm: 14px;
+  --gap-md: 20px;
+  --gap-lg: 28px;
+  --gap-xl: 40px;
+}
+
+/* Общий принцип: текстовые элементы внутри блоков не слипаются */
+.hero-copy,
+.about-copy,
+.calc-head,
+.calc-box,
+.final-grid > *,
+.footer-grid > *,
+.modal-box,
+.cookie-inner{
+  min-width: 0;
+}
+
+.hero-copy,
+.about-copy,
+.calc-head{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Заголовки и текст */
+.hero-copy h1{
+  margin-bottom: 24px;
+}
+
+.hero-copy .lead{
+  margin-bottom: 28px;
+}
+
+.about-copy .section-title{
+  margin-bottom: 24px !important;
+}
+
+.about-copy .lead + .lead{
+  margin-top: 18px;
+}
+
+.about-copy .badges{
+  margin-top: 28px;
+}
+
+/* Кнопки не прилипают друг к другу */
+.hero-btns,
+.calc-actions{
+  gap: 14px;
+}
+
+/* Списки и карточки */
+.checklist{
+  gap: 12px;
+}
+
+.calc-box{
+  padding: clamp(24px, 3vw, 36px);
+}
+
+.calc-note{
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  line-height: 1.65;
+}
+
+.calc-item{
+  min-height: 64px;
+  padding: 18px 4px;
+  gap: 22px;
+}
+
+.calc-item .left{
+  gap: 16px;
+  min-width: 0;
+}
+
+.calc-item .svc-name{
+  line-height: 1.45;
+}
+
+.calc-item .svc-price{
+  flex-shrink: 0;
+  margin-left: 12px;
+}
+
+.calc-area{
+  margin-top: 32px;
+}
+
+.calc-area label{
+  margin-bottom: 10px;
+}
+
+.calc-result{
+  margin-top: 28px;
+  padding: 24px;
+  line-height: 1.65;
+}
+
+.calc-result b{
+  margin-bottom: 10px;
+}
+
+.calc-contact{
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.calc-contact input{
+  min-height: 46px;
+}
+
+.badges{
+  gap: 12px;
+}
+
+.badge{
+  padding: 10px 14px;
+}
+
+/* Сетки: больше воздуха между соседними элементами */
+.adv-grid{
+  gap: 24px;
+}
+
+.adv-item{
+  padding: 28px 28px 28px 0;
+}
+
+.steps-row{
+  gap: 24px;
+}
+
+.step{
+  padding: 28px 24px 0 0;
+}
+
+.portfolio-grid{
+  gap: 36px 28px;
+}
+
+.portfolio-info{
+  padding: 16px 4px 0;
+  margin-top: 16px;
+  gap: 18px;
+}
+
+.portfolio-info h4{
+  margin-bottom: 8px;
+  line-height: 1.45;
+}
+
+.video-grid{
+  gap: 28px;
+}
+
+.video-item .ph-video{
+  margin-bottom: 12px;
+}
+
+.review-grid{
+  gap: 24px;
+}
+
+.review-card{
+  padding: 28px;
+}
+
+.review-text{
+  line-height: 1.75;
+}
+
+.review-head{
+  gap: 14px;
+  padding-top: 24px;
+}
+
+.review-meta{
+  margin-top: 14px;
+}
+
+.guarantee-grid{
+  gap: 2px;
+}
+
+.guarantee-item{
+  padding: 40px 32px;
+}
+
+.guarantee-item h3{
+  margin-bottom: 12px;
+}
+
+.faq-list{
+  max-width: 900px;
+}
+
+.faq-item{
+  padding: 20px 0;
+}
+
+.faq-q{
+  gap: 28px;
+}
+
+.faq-q h3{
+  line-height: 1.5;
+}
+
+.faq-a p{
+  padding-top: 16px;
+  line-height: 1.75;
+}
+
+/* География */
+.area-list{
+  gap: 0 24px;
+  margin: 28px 0 32px;
+}
+
+.area-list li{
+  padding: 10px 0;
+}
+
+/* Статистика */
+.stat-band{
+  column-gap: 28px;
+}
+
+.stat-band .stat{
+  padding: 8px 24px 8px 0;
+}
+
+.rating-band{
+  gap: 48px;
+  padding: 24px 0;
+}
+
+/* Футер */
+.footer-grid{
+  gap: 36px;
+}
+
+.footer-grid h4{
+  margin-bottom: 18px;
+}
+
+.footer-grid li{
+  margin-bottom: 12px;
+}
+
+.footer-policies{
+  padding-top: 32px;
+}
+
+.policy-links{
+  gap: 14px 24px;
+  margin-bottom: 28px;
+}
+
+/* Модальные окна */
+.modal-box{
+  padding: 32px;
+}
+
+.modal-box h3{
+  padding-right: 40px;
+  margin-bottom: 24px;
+}
+
+.modal-box p{
+  margin-bottom: 18px;
+  line-height: 1.75;
+}
+
+/* CTA */
+.final-grid{
+  gap: 72px;
+}
+
+.final-cta h2{
+  margin-bottom: 24px;
+}
+
+.final-cta .calc-box{
+  padding: 32px;
+}
+
+/* Мобильные отступы */
+@media (max-width:1080px){
+  .hero-grid,
+  .about-grid,
+  .area-grid,
+  .calc-grid-outer,
+  .final-grid{
+    gap: 44px;
+  }
+
+  .adv-grid,
+  .portfolio-grid,
+  .video-grid,
+  .guarantee-grid,
+  .review-grid{
+    gap: 22px;
+  }
+
+  .steps-row{
+    gap: 22px;
+  }
+}
+
+@media (max-width:760px){
+  .hero-grid,
+  .about-grid,
+  .area-grid,
+  .calc-grid-outer,
+  .final-grid{
+    gap: 36px;
+  }
+
+  .hero-copy h1{
+    margin-bottom: 20px;
+  }
+
+  .hero-copy .lead{
+    margin-bottom: 24px;
+  }
+
+  .hero-btns,
+  .calc-actions{
+    width: 100%;
+    gap: 10px;
+  }
+
+  .hero-btns .btn,
+  .calc-actions .btn{
+    width: 100%;
+    justify-content: center;
+  }
+
+  .calc-box{
+    padding: 22px;
+  }
+
+  .calc-item{
+    align-items: flex-start;
+    padding: 17px 2px;
+    gap: 12px;
+  }
+
+  .calc-item .left{
+    gap: 11px;
+  }
+
+  .calc-item .svc-price{
+    margin-left: 6px;
+    text-align: right;
+  }
+
+  .adv-grid,
+  .portfolio-grid,
+  .video-grid,
+  .guarantee-grid,
+  .review-grid,
+  .steps-row{
+    gap: 18px;
+  }
+
+  .adv-item,
+  .step{
+    padding-right: 0;
+  }
+
+  .review-card{
+    padding: 22px;
+  }
+
+  .guarantee-item{
+    padding: 30px 24px;
+  }
+
+  .final-grid{
+    gap: 36px;
+  }
+
+  .final-cta .calc-box{
+    padding: 22px;
+  }
+
+  .footer-grid{
+    gap: 30px;
+  }
+
+  .modal-box{
+    padding: 24px;
+  }
+}
+
+
+/* =========================================================
+   ФИНАЛЬНАЯ ПРАВКА: боковые отступы меню + единые карточки
+   ========================================================= */
+
+/* 1. Верхнее меню: нормальные боковые отступы */
+header,
+.site-header,
+.header,
+.navbar{
+  box-sizing: border-box;
+}
+
+header .container,
+.site-header .container,
+.header .container,
+.navbar .container{
+  width: min(100% - 32px, 1240px);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Если навигация находится непосредственно внутри header */
+header nav,
+.site-header nav,
+.header nav,
+.navbar nav{
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+/* На мобильных — чуть меньше боковой отступ */
+@media (max-width:760px){
+  header .container,
+  .site-header .container,
+  .header .container,
+  .navbar .container{
+    width: min(100% - 24px, 1240px);
+  }
+
+  header nav,
+  .site-header nav,
+  .header nav,
+  .navbar nav{
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+}
+
+/* 2. Блок 4 — карточки/элементы должны выглядеть как единые цельные элементы.
+      Убираем эффект "порванных" границ между частями. */
+
+.adv-grid{
+  gap: 0;
+  border: 0;
+  border-radius: 0;
+  overflow: visible;
+  background: transparent;
+}
+
+.adv-item{
+  box-sizing: border-box;
+  border: 0 !important;
+  border-right: 0 !important;
+  border-bottom: 0 !important;
+  border-radius: 0 !important;
+  margin: 0 !important;
+  background: transparent;
+}
+
+/* Responsive helpers left intact but without border toggles */
+@media (max-width:1080px){
+  /* no internal borders for 2-column layout */
+}
+
+@media (max-width:760px){
+  .adv-grid{
+    display: grid;
+    gap: 0;
+  }
+  .adv-item,
+  .adv-item:nth-child(2n),
+  .adv-item:nth-child(4n){
+    border-right: 0 !important;
+    border-bottom: 0 !important;
+  }
+}
+
+/* 3. Блок 5 — тот же принцип: один цельный контейнер,
+      а не несколько разорванных рамок. */
+
+.steps-row{
+  gap: 0;
+  border: 0;
+  border-radius: 0;
+  overflow: visible;
+  background: transparent;
+}
+
+.step{
+  box-sizing: border-box;
+  border: 0 !important;
+  border-right: 0 !important;
+  border-bottom: 0 !important;
+  border-radius: 0 !important;
+  margin: 0 !important;
+  background: transparent;
+}
+
+.step:last-child{
+  border-right: 0 !important;
+}
+
+@media (max-width:1080px){
+  .steps-row{
+    border-radius: 0;
+  }
+
+  .step{
+    border-right: 0 !important;
+    border-bottom: 0 !important;
+  }
+
+  .step:nth-child(2n){
+    border-right: 0 !important;
+  }
+
+  .step:nth-last-child(-n+2){
+    border-bottom: 0 !important;
+  }
+}
+
+@media (max-width:760px){
+  .step,
+  .step:nth-child(2n){
+    border-right: 0 !important;
+    border-bottom: 0 !important;
+  }
+
+  .step:last-child{
+    border-bottom: 0 !important;
+  }
+}
+
+/* 4. Блок 10 — одна и та же переменная/цвет для рамок.
+      Принудительно приводим рамку карточек к цвету общей линии. */
+.guarantee-grid{
+  border: 1px solid var(--border) !important;
+  border-radius: 0 !important;
+  overflow: hidden;
+}
+
+.guarantee-item{
+  border-color: var(--border) !important;
+  border-radius: 0 !important;
+}
+
+.guarantee-item + .guarantee-item{
+  border-left-color: var(--border) !important;
+}
+
+@media (max-width:760px){
+  .guarantee-item + .guarantee-item{
+    border-left: 0 !important;
+    border-top-color: var(--border) !important;
+  }
+}
+
+
+/* ============ FINAL UI FIXES ============ */
+/* Кнопки: всегда синие, текст всегда читаемый */
+:root{ --btn-blue:#000038; --btn-blue-hover:#000038; }
+.btn{
+  background:var(--btn-blue);
+  color:#fff !important;
+  border-color:var(--btn-blue);
+}
+.btn:hover,
+.btn:focus-visible{
+  background:var(--btn-blue-hover);
+  color:#fff !important;
+  border-color:var(--btn-blue-hover);
+  text-decoration:none;
+}
+.btn-outline{
+  background:var(--btn-blue);
+  color:#fff !important;
+  border-color:var(--btn-blue);
+}
+.btn-outline:hover,
+.btn-outline:focus-visible{
+  background:var(--btn-blue-hover);
+  color:#fff !important;
+  border-color:var(--btn-blue-hover);
+}
+.btn-invert{
+  background:var(--btn-blue);
+  color:#fff !important;
+  border-color:var(--btn-blue);
+}
+.btn-invert:hover,
+.btn-invert:focus-visible{
+  background:var(--btn-blue-hover);
+  color:#fff !important;
+  border-color:var(--btn-blue-hover);
+}
+
+/* Блоки 4 и 5: аккуратная сетка в исходной стилистике */
+.adv-grid{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:1px;
+  background:var(--border);
+  border:1px solid var(--border);
+  overflow:hidden;
+}
+.adv-item{
+  background:var(--white);
+  padding:28px;
+  min-width:0;
+}
+.steps-row{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:1px;
+  background:var(--border);
+  border:1px solid var(--border);
+  overflow:hidden;
+}
+.step{
+  background:var(--white);
+  padding:28px;
+  min-width:0;
+}
+.step .num{margin-bottom:18px;}
+
+/* Блок 6: одинаковые внутренние отступы в карточках */
+.portfolio-item{min-width:0;}
+.portfolio-info{
+  box-sizing:border-box;
+  padding:16px;
+  margin:0;
+  min-height:82px;
+  align-items:flex-start;
+}
+.portfolio-info > div:first-child{min-width:0;}
+.portfolio-info h4{margin:0 0 6px; line-height:1.35;}
+.portfolio-info .cat{display:block; line-height:1.35;}
+.portfolio-info .price{white-space:nowrap; padding-top:2px;}
+
+/* Не допускаем горизонтального скролла */
+html,body{max-width:100%;overflow-x:hidden;}
+img{height:auto;}
+
+/* Мобильная версия */
+@media (max-width:1080px){
+  .adv-grid,.steps-row{grid-template-columns:repeat(2,minmax(0,1fr));}
+}
+@media (max-width:760px){
+  .wrap{width:100%;max-width:100%;padding-left:14px;padding-right:14px;}
+  .hero-grid,.about-grid,.area-grid,.calc-grid-outer,.final-grid{gap:24px;}
+  .hero-grid .hero-visual{order:-1;}
+  .hero-visual .ph-photo{max-height:none;aspect-ratio:4/3;}
+  .about-visual .ph-photo{max-height:none;aspect-ratio:4/3;}
+  .adv-grid,.steps-row,.portfolio-grid,.review-grid,.guarantee-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:8px;
+  }
+  .adv-item,.step{padding:18px 14px;}
+  .adv-num{margin-bottom:14px;}
+  .adv-item h3{font-size:14px;line-height:1.3;}
+  .adv-item p{font-size:12px;line-height:1.5;}
+  .step .num{font-size:24px;margin-bottom:12px;}
+  .step h3{font-size:11px;line-height:1.35;}
+  .step p{font-size:11px;line-height:1.5;}
+  .portfolio-item{padding:0;}
+  .portfolio-item .ph{aspect-ratio:1/1;}
+  .portfolio-info{padding:12px;min-height:0;display:block;}
+  .portfolio-info h4{font-size:13px;}
+  .portfolio-info .cat{font-size:9px;margin-bottom:7px;}
+  .portfolio-info .price{font-size:10px;padding-top:0;}
+  .filter-row{gap:6px;margin-bottom:18px;}
+  .filter-pill{padding:8px 10px;font-size:9px;}
+  .calc-box,.review-card,.guarantee-item{padding:18px;}
+  .review-grid{gap:8px;}
+  .review-card{min-width:0;}
+  .review-text{font-size:12px;line-height:1.6;}
+  .review-name{font-size:12px;}
+  .review-head{gap:8px;padding-top:16px;}
+  .ph-avatar{width:36px;height:36px;}
+  .rating-band{gap:16px;}
+  .stat-band{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;}
+  .stat-band .stat{padding:8px 8px 8px 0;}
+  .stat b{font-size:24px;}
+  .stat span{font-size:8px;line-height:1.35;}
+  .hero-btns,.calc-actions{flex-direction:row;flex-wrap:wrap;}
+  .hero-btns .btn,.calc-actions .btn{width:auto;flex:1 1 150px;}
+  .calc-contact{display:grid !important;grid-template-columns:1fr;gap:8px;}
+  .calc-contact input{min-width:0;width:100%;}
+  .area-list{columns:2;column-gap:20px;}
+  .area-list li{font-size:11px;}
+  .footer-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;}
+  .footer-grid > div:first-child{grid-column:1/-1;}
+  .footer-statement{font-size:22px;}
+  .modal-box{max-width:calc(100vw - 28px);padding:20px;}
+}
+@media (max-width:420px){
+  .wrap{padding-left:12px;padding-right:12px;}
+  .adv-grid,.steps-row{gap:6px;}
+  .adv-item,.step{padding:16px 12px;}
+  .portfolio-grid,.review-grid,.guarantee-grid{gap:6px;}
+  .portfolio-info{padding:10px;}
+  .portfolio-info h4{font-size:12px;}
+  .hero-btns .btn,.calc-actions .btn{flex-basis:100%;}
+  .footer-grid{grid-template-columns:1fr;}
+  .footer-grid > div:first-child{grid-column:auto;}
+}
+
+
+/* ===== Финальные правки ===== */
+:root{--clay:#000038;--btn-blue:#000038;--btn-blue-hover:#000038;}
+.btn,.btn-invert{background:var(--btn-blue)!important;color:#fff!important;border-color:var(--btn-blue)!important;}
+.btn:hover,.btn:focus-visible,.btn-invert:hover,.btn-invert:focus-visible{background:var(--btn-blue-hover)!important;color:#fff!important;border-color:var(--btn-blue-hover)!important;}
+.btn-outline{background:var(--btn-blue)!important;color:#fff!important;border-color:var(--btn-blue)!important;}
+.btn-outline:hover,.btn-outline:focus-visible{background:var(--btn-blue-hover)!important;color:#fff!important;border-color:var(--btn-blue-hover)!important;}
+/* Блок 5: 3 сверху, 2 снизу на всю ширину */
+.steps-row{grid-template-columns:repeat(6,minmax(0,1fr))!important;gap:1px!important;}
+.steps-row .step{grid-column:span 2;}
+.steps-row .step:nth-child(4){grid-column:1 / span 3;}
+.steps-row .step:nth-child(5){grid-column:4 / span 3;}
+/* В блоке 6 всегда показываем только первые 8 работ */
+#portfolioGrid .portfolio-item:nth-child(n+9){display:none!important;}
+#portfolioMoreWrap{display:none!important;}
+/* Ровная мобильная сетка без серых щелей */
+@media(max-width:760px){
+  .mobile-menu{width:100vw;max-width:100vw;right:0;left:auto;box-sizing:border-box;overflow:hidden;}
+  .mobile-menu ul{padding:0 20px;margin:0;list-style:none;}
+  .mobile-menu li{margin:0;border-bottom:1px solid var(--border);}
+  .mobile-menu li a{display:block;padding:16px 0;text-decoration:none;}
+  .mobile-menu-top{padding:14px 20px;}
+  .mobile-menu-foot{padding:20px;}
+  .hero-visual .tag-inner,.hero-visual .spec-tag{display:none!important;}
+  .adv-grid,.steps-row,.guarantee-grid{gap:0!important;background:var(--border);}
+  .adv-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;}
+  .adv-item{border:0!important;}
+  .steps-row{grid-template-columns:repeat(2,minmax(0,1fr))!important;}
+  .steps-row .step{grid-column:auto!important;}
+  .steps-row .step:nth-child(5){grid-column:1 / span 2!important;}
+  .guarantee-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;}
+  .guarantee-item{border:0!important;}
+  .guarantee-item:nth-child(3){grid-column:1 / span 2;}
+  .portfolio-grid{gap:0!important;background:var(--border);}
+  .portfolio-item{background:var(--white);}
+  .review-avatar-placeholder{display:flex;align-items:center;justify-content:center;width:100%;height:100%;font-family:var(--f-mono);font-size:10px;color:var(--stone);}
+}
+@media(max-width:420px){
+  .adv-grid,.steps-row,.guarantee-grid,.portfolio-grid{gap:0!important;}
+}
+
+
+/* На телефоне показываем только 4 отзыва — 2x2 */
+@media (max-width:760px){
+  #reviewsCarousel .review-page{
+    display:none!important;
+  }
+  #reviewsCarousel .review-page:first-child{
+    display:grid!important;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    grid-template-rows:repeat(2,minmax(0,1fr));
+  }
+  #reviewsCarousel .reviews-controls{
+    display:none;
+  }
+}
+
+</style>
+
+<style>
+@media (max-width:760px){
+  #mobileMenu .mobile-brand,
+  #mobileMenu .mobile-cta,
+  #mobileMenu .menu-brand,
+  #mobileMenu .menu-cta,
+  #mobileMenu .btn{display:none!important;}
+}
+
+/* Review carousel responsive layout */
+@media (max-width:1080px){
+  .review-page{grid-template-columns:repeat(2,minmax(0,1fr));}
+}
+@media (max-width:760px){
+  .review-page{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    grid-template-rows:repeat(2,minmax(0,1fr));
+    gap:8px;
+  }
+  .review-card{
+    padding:14px;
+    min-width:0;
+    overflow:hidden;
+  }
+  .review-text{
+    font-size:11px;
+    line-height:1.5;
+    overflow-wrap:anywhere;
+  }
+  .review-name{font-size:11px;}
+  .review-meta{font-size:8px;line-height:1.35;}
+  .review-head{gap:8px;padding-top:12px;}
+  .reviews-controls{margin-top:18px;}
+}
+
+
+/* Блок 12: отдельный цвет кнопок для финального CTA */
+.final-cta{
+  --cta-btn:#FFFFFF;
+  --cta-btn-hover:#F2F2F2;
+}
+.final-cta .btn,
+.final-cta .btn-outline,
+.final-cta .btn-invert{
+  background:#fff!important;
+  color:var(--graphite)!important;
+  border-color:#fff!important;
+}
+.final-cta .btn:hover,
+.final-cta .btn:focus-visible,
+.final-cta .btn-outline:hover,
+.final-cta .btn-outline:focus-visible,
+.final-cta .btn-invert:hover,
+.final-cta .btn-invert:focus-visible{
+  background:#F2F2F2!important;
+  color:var(--graphite)!important;
+  border-color:#F2F2F2!important;
+}
+
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header id="siteHeader">
+  <div class="wrap header-inner">
+    <a class="logo" href="#top"><span class="mark">SP</span>СтройПрофи<span>Бригада полного цикла</span></a>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="#calculator">Услуги и цены</a></li>
+        <li><a href="#portfolio">Наши работы</a></li>
+        <li><a href="#video">Видео</a></li>
+        <li><a href="#reviews">Отзывы</a></li>
+        <li><a href="#contacts">Контакты</a></li>
+      </ul>
+    </nav>
+    <div class="header-cta">
+      <a class="phone" href="tel:+79672756333">+7 967 275 63 33<small>с 7:00 до 23:00</small></a>
+      <a class="btn" href="#calculator">Оставить заявку</a>
+      <button class="menu-trigger" id="menuTrigger" aria-label="Открыть меню"><span></span><span></span></button>
+    </div>
+
+    
+  </div>
+</header>
+
+<!-- ============ MOBILE MENU ============ -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-top">
+    <span class="logo"><span class="mark">SP</span>СтройПрофи</span>
+    <button class="mobile-menu-close" id="menuClose" aria-label="Закрыть меню">×</button>
+  </div>
+  <ul>
+    <li><a href="#calculator">Услуги и цены</a></li>
+    <li><a href="#portfolio">Наши работы</a></li>
+    <li><a href="#video">Видео</a></li>
+    <li><a href="#reviews">Отзывы</a></li>
+    <li><a href="#contacts">Контакты</a></li>
+  </ul>
+  <div class="mobile-menu-foot">
+    <a class="phone" href="tel:+79672756333" style="align-items:flex-start;">+7 967 275 63 33<small>с 7:00 до 23:00</small></a>
+  </div>
+</div>
+
+<div id="top"></div>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-copy reveal">
+        <span class="eyebrow">Кровля · Полы · Фасад · Дома под ключ</span>
+        <h1>Строим и ремонтируем, не срывая сроков</h1>
+        <p class="lead">Своя бригада с опытом более 10 лет на объектах Москвы и Московской области. Дома из газобетона, керамоблоков, кирпича и бруса, кровельные, фасадные и отделочные работы — по договору, с фиксированной сметой и гарантией.</p>
+        <div class="hero-btns">
+          <a class="btn" href="#calculator">Рассчитать <span class="arrow">→</span></a>
+          <a class="btn btn-outline" href="tel:+79672756333">Позвонить сейчас</a>
+        </div>
+        <ul class="checklist">
+          <li>Бесплатный выезд и замер в день обращения</li>
+          <li>Сроки и смета фиксируются в договоре</li>
+          <li>Гарантия на все виды работ</li>
+        </ul>
+      </div>
+      <div class="hero-visual reveal">
+          <div class="ph ph-photo">
+            <img class="zoomimg" src="images/1.webp" alt="Бригада на объекте" style="width:100%;height:100%;object-fit:cover;">
+          <span class="spec-tag" style="top:14px; left:14px;"><b>Объект / Кровля</b><span>Московская область</span></span>
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="stat-band reveal">
+      <div class="stat"><b>10+</b><span>Лет опыта бригады</span></div>
+      <div class="stat"><b>89</b><span><a href="https://uslugi.yandex.ru/profile/RuslanAndreevichS-2360950" target="_blank" rel="noopener">Оценок клиентов на Яндекс.Услугах</a></span></div>
+      <div class="stat"><b>4.8</b><span>Средний рейтинг из 5</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ КАЛЬКУЛЯТОР УСЛУГ ============ -->
+<section id="calculator" class="pad-lg">
+  <div class="wrap calc-grid-outer">
+    <div class="calc-head reveal">
+      <span class="eyebrow">Услуги</span>
+      <h2 class="section-title">Рассчитайте стоимость работ</h2>
+      <p class="lead" style="margin-top:18px;">Отметьте, что нужно сделать — покажем ориентировочную цену. Точную стоимость назовём после бесплатного замера объекта.</p>
+    </div>
+
+    <div class="calc-box reveal">
+      <p class="calc-note">Все цены — «от», финальная сумма фиксируется в договоре после выезда на объект</p>
+
+      <ul class="svc-list" id="calcGrid">
+        <li class="calc-item"><label class="left"><input type="checkbox" data-price="950" data-unit="м²"><span><span class="svc-name">Укладка полов и напольных покрытий</span></span></label><span class="svc-price">от 950 ₽ / м²</span></li>
+        <li class="calc-item"><label class="left"><input type="checkbox" data-price="2500" data-unit="service"><span><span class="svc-name">Отделка деревянных домов</span></span></label><span class="svc-price">от 2 500 ₽</span></li>
+        <li class="calc-item"><label class="left"><input type="checkbox" data-price="2300000" data-unit="flat"><span><span class="svc-name">Строительство домов и коттеджей</span></span></label><span class="svc-price">от 2 300 000 ₽</span></li>
+        <li class="calc-item"><label class="left"><input type="checkbox" data-price="1800" data-unit="пог.м"><span><span class="svc-name">Строительство заборов и ограждений</span></span></label><span class="svc-price">от 1 800 ₽ / пог.м</span></li>
+        <li class="calc-item"><label class="left"><input type="checkbox" data-price="250000" data-unit="flat"><span><span class="svc-name">Строительство бань, саун и бассейнов</span></span></label><span class="svc-price">от 250 000 ₽</span></li>
+        <li class="calc-item"><label class="left"><input type="checkbox" data-price="40000" data-unit="flat"><span><span class="svc-name">Бетонные работы</span></span></label><span class="svc-price">от 40 000 ₽</span></li>
+        <li class="calc-item"><label class="left"><input type="checkbox" data-price="1000" data-unit="м²"><span><span class="svc-name">Кровельные работы</span></span></label><span class="svc-price">от 1 000 ₽ / м²</span></li>
+        <li class="calc-item"><label class="left"><input type="checkbox" data-price="50000" data-unit="flat"><span><span class="svc-name">Фасадные работы</span></span></label><span class="svc-price">от 50 000 ₽</span></li>
+        <li class="calc-item"><label class="left"><input type="checkbox" data-price="40000" data-unit="flat"><span><span class="svc-name">Строительство фундамента</span></span></label><span class="svc-price">от 40 000 ₽</span></li>
+        <li class="calc-item"><label class="left"><input type="checkbox" data-price="150000" data-unit="flat"><span><span class="svc-name">Строительство гаражей</span></span></label><span class="svc-price">от 150 000 ₽</span></li>
+      </ul>
+
+      <div class="calc-area">
+        <label>Площадь объекта, м² (если применимо)</label>
+        <input type="number" id="calcAreaInput" placeholder="Например, 80">
+      </div>
+
+      <div class="calc-result" id="calcResult">
+        <b id="calcTotal">0 ₽</b>
+        Ориентировочный расчёт по выбранным услугам. Точную цену подтвердим на бесплатном замере.
+      </div>
+
+      <div class="calc-actions">
+        <button class="btn" id="calcBtn" type="button">Рассчитать <span class="arrow">→</span></button>
+        <a class="btn btn-outline" href="tel:+79672756333">Позвонить</a>
+      </div>
+
+      <div class="calc-contact" id="calcContact" style="display:none;">
+        <input type="text" placeholder="Ваше имя">
+        <input type="tel" placeholder="+7 967 275 63 33">
+        <button class="btn" type="button">Отправить заявку</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ О КОМПАНИИ ============ -->
+<section id="about" class="pad-lg divider">
+  <div class="wrap about-grid">
+    <div class="about-visual reveal">
+      <div class="ph ph-photo">
+        <img class="zoomimg" src="images/2.webp" alt="Фото бригады" style="width:100%;height:100%;object-fit:cover;">
+        <span class="spec-tag" style="bottom:14px; right:14px; top:auto; left:auto;"><b>Своя бригада</b><span>10+ лет опыта</span></span>
+        <div class="tag-inner"><span class="ph-label">Фото бригады</span></div>
+      </div>
+    </div>
+    <div class="about-copy reveal">
+      <span class="eyebrow">О компании</span>
+      <h2 class="section-title" style="margin-bottom:18px;">Бригада полного цикла — от ремонта пола до дома под ключ</h2>
+      <p class="lead">Более 10 лет практического опыта на объектах Москвы и Московской области, своя команда, работа по договору и с гарантией.</p>
+      <p class="lead">Специализация — строительство домов из газобетона, керамоблоков, кирпича и бруса «под ключ», а также кровельные, фасадные и отделочные работы любой сложности.</p>
+      <p class="lead">Перед началом работ всегда выезжаем на бесплатный замер и считаем смету — вы видите цену до старта, а не после.</p>
+      <div class="badges">
+        <span class="badge">Проверенный персонал</span>
+        <span class="badge">Работаем по договору</span>
+        <span class="badge">Даём гарантию</span>
+        <span class="badge">Своя бригада</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ПОЧЕМУ МЫ ============ -->
+<section id="advantages" class="pad-lg divider">
+  <div class="wrap">
+    <span class="eyebrow reveal">Почему выбирают нас</span>
+    <h2 class="section-title reveal" style="margin-bottom:44px;">Шесть причин доверить нам объект</h2>
+    <div class="adv-grid reveal">
+      <div class="adv-item"><h3>Бесплатный замер</h3><p>Точная цена до начала работ — без предоплаты вслепую.</p></div>
+      <div class="adv-item"><h3>Договор</h3><p>Сроки и смета фиксируются на бумаге до старта работ.</p></div>
+      <div class="adv-item"><h3>Гарантия</h3><p>На все виды выполненных работ, прописана в договоре.</p></div>
+      <div class="adv-item"><h3>Своя бригада</h3><p>Работаем без случайных субподрядчиков со стороны.</p></div>
+      <div class="adv-item"><h3>10+ лет опыта</h3><p>Знаем, где обычно ошибаются, и не повторяем этого.</p></div>
+      <div class="adv-item"><h3>Честная цена</h3><p>Смета формируется по факту объекта, без наценок.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ КАК МЫ РАБОТАЕМ ============ -->
+<section id="steps" class="pad-lg divider">
+  <div class="wrap">
+    <span class="eyebrow reveal">Процесс</span>
+    <h2 class="section-title reveal" style="margin-bottom:44px;">Как проходит работа — пять шагов</h2>
+    <div class="steps-row reveal">
+      <div class="step"><h3>Заявка</h3><p>Звонок или форма на сайте.</p></div>
+      <div class="step"><h3>Замер</h3><p>Бесплатно, в удобное время.</p></div>
+      <div class="step"><h3>Договор</h3><p>Фиксируем цену и сроки.</p></div>
+      <div class="step"><h3>Работы</h3><p>Бригада на объекте.</p></div>
+      <div class="step"><h3>Сдача</h3><p>Приёмка объекта, гарантия.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ НАШИ РАБОТЫ: 15 ФОТО ============ -->
+<section id="portfolio" class="pad-lg divider">
+  <div class="wrap">
+    <span class="eyebrow reveal">Реальные объекты</span>
+    <h2 class="section-title reveal" style="margin-bottom:28px;">Наши работы</h2>
+
+    <div class="filter-row reveal" id="filterRow">
+      <span class="filter-pill active" data-filter="all">Все</span>
+      <span class="filter-pill" data-filter="roof">Кровля</span>
+      <span class="filter-pill" data-filter="floor">Полы</span>
+      <span class="filter-pill" data-filter="facade">Фасад</span>
+      <span class="filter-pill" data-filter="house">Дома под ключ</span>
+      <span class="filter-pill" data-filter="bath">Бани и хозблоки</span>
+      <span class="filter-pill" data-filter="foundation">Фундамент</span>
+    </div>
+
+    <div class="portfolio-grid reveal" id="portfolioGrid">
+      <div class="portfolio-item" data-cat="floor"><div class="ph ph-square"><img class="zoomimg" src="images/3.webp" alt="Ремонт деревянного пола" style="width:100%;height:100%;object-fit:cover;"><div class="tag-inner"><span class="ph-label">Объект</span></div></div><div class="portfolio-info"><div><h4>Ремонт деревянного пола</h4><span class="cat">Полы</span></div><div class="price">от 2 500 ₽</div></div></div>
+      <div class="portfolio-item" data-cat="roof"><div class="ph ph-square"><img class="zoomimg" src="images/4.webp" alt="Перекрытие крыши профлистом" style="width:100%;height:100%;object-fit:cover;"><div class="tag-inner"><span class="ph-label">Объект</span></div></div><div class="portfolio-info"><div><h4>Перекрытие крыши профлистом</h4><span class="cat">Кровля</span></div><div class="price">от 100 000 ₽</div></div></div>
+      <div class="portfolio-item" data-cat="foundation"><div class="ph ph-square"><img class="zoomimg" src="images/5.webp" alt="Бетонные работы" style="width:100%;height:100%;object-fit:cover;"><div class="tag-inner"><span class="ph-label">Объект</span></div></div><div class="portfolio-info"><div><h4>Бетонные работы</h4><span class="cat">Фундамент</span></div><div class="price">от 40 000 ₽</div></div></div>
+      <div class="portfolio-item" data-cat="house"><div class="ph ph-square"><img class="zoomimg" src="images/6.webp" alt="Строительство дома 120 м²" style="width:100%;height:100%;object-fit:cover;"><div class="tag-inner"><span class="ph-label">Объект</span></div></div><div class="portfolio-info"><div><h4>Строительство дома 120 м²</h4><span class="cat">Дом под ключ</span></div><div class="price">от 2 300 000 ₽</div></div></div>
+      <div class="portfolio-item" data-cat="facade"><div class="ph ph-square"><img class="zoomimg" src="images/7.webp" alt="Фасадные работы" style="width:100%;height:100%;object-fit:cover;"><div class="tag-inner"><span class="ph-label">Объект</span></div></div><div class="portfolio-info"><div><h4>Фасадные работы</h4><span class="cat">Фасад</span></div><div class="price">от 50 000 ₽</div></div></div>
+      <div class="portfolio-item" data-cat="bath"><div class="ph ph-square"><img class="zoomimg" src="images/8.webp" alt="Строительство бани" style="width:100%;height:100%;object-fit:cover;"><div class="tag-inner"><span class="ph-label">Объект</span></div></div><div class="portfolio-info"><div><h4>Строительство бани под ключ</h4><span class="cat">Баня</span></div><div class="price">от 250 000 ₽</div></div></div>
+
+      <div class="portfolio-item" data-cat="roof"><div class="ph ph-square"><img class="zoomimg" src="images/9.webp" alt="Услуги кровельщика" style="width:100%;height:100%;object-fit:cover;"><div class="tag-inner"><span class="ph-label">Объект</span></div></div><div class="portfolio-info"><div><h4>Услуги кровельщика</h4><span class="cat">Кровля</span></div><div class="price">от 1 000 ₽</div></div></div>
+      <div class="portfolio-item" data-cat="roof"><div class="ph ph-square"><img class="zoomimg" src="images/10.webp" alt="Ремонт крыши" style="width:100%;height:100%;object-fit:cover;"><div class="tag-inner"><span class="ph-label">Объект</span></div></div><div class="portfolio-info"><div><h4>Ремонт крыши</h4><span class="cat">Кровля</span></div><div class="price">от 30 000 ₽</div></div></div>
+      <div class="portfolio-item" data-cat="roof"><div class="ph ph-square"><img class="zoomimg" src="images/11.webp" alt="Услуги кровельщика (объект 2)" style="width:100%;height:100%;object-fit:cover;"><div class="tag-inner"><span class="ph-label">Объект</span></div></div><div class="portfolio-info"><div><h4>Услуги кровельщика (объект 2)</h4><span class="cat">Кровля</span></div><div class="price">от 110 000 ₽</div></div></div>
+      <div class="portfolio-item" data-cat="house"><div class="ph ph-square"><img class="zoomimg" src="images/12.webp" alt="Реконструкция дома" style="width:100%;height:100%;object-fit:cover;"><div class="tag-inner"><span class="ph-label">Объект</span></div></div><div class="portfolio-info"><div><h4>Реконструкция дома</h4><span class="cat">Дом под ключ</span></div><div class="price">от 84 500 ₽</div></div></div>
+      <div class="portfolio-item" data-cat="roof"><div class="ph ph-square"><img class="zoomimg" src="images/13.webp" alt="Монтаж кровли" style="width:100%;height:100%;object-fit:cover;"><div class="tag-inner"><span class="ph-label">Объект</span></div></div><div class="portfolio-info"><div><h4>Монтаж кровли</h4><span class="cat">Кровля</span></div><div class="price">от 1 000 ₽</div></div></div>
+      <div class="portfolio-item" data-cat="roof"><div class="ph ph-square"><img class="zoomimg" src="images/14.webp" alt="Кровельные работы под ключ" style="width:100%;height:100%;object-fit:cover;"><div class="tag-inner"><span class="ph-label">Объект</span></div></div><div class="portfolio-info"><div><h4>Кровельные работы «под ключ»</h4><span class="cat">Кровля</span></div><div class="price">от 1 000 ₽</div></div></div>
+      <div class="portfolio-item" data-cat="foundation"><div class="ph ph-square"><img class="zoomimg" src="images/15.webp" alt="Поднятие дома домкратами" style="width:100%;height:100%;object-fit:cover;"><div class="tag-inner"><span class="ph-label">Объект</span></div></div><div class="portfolio-info"><div><h4>Поднятие дома домкратами</h4><span class="cat">Фундамент</span></div><div class="price">от 50 000 ₽</div></div></div>
+      <div class="portfolio-item" data-cat="roof"><div class="ph ph-square"><img class="zoomimg" src="images/16.webp" alt="Кровельные работы" style="width:100%;height:100%;object-fit:cover;"><div class="tag-inner"><span class="ph-label">Объект</span></div></div><div class="portfolio-info"><div><h4>Кровельные работы</h4><span class="cat">Кровля</span></div><div class="price">от 42 500 ₽</div></div></div>
+      <div class="portfolio-item" data-cat="bath"><div class="ph ph-square"><img class="zoomimg" src="images/17.webp" alt="Строительство хозблока" style="width:100%;height:100%;object-fit:cover;"><div class="tag-inner"><span class="ph-label">Объект</span></div></div><div class="portfolio-info"><div><h4>Строительство хозблока</h4><span class="cat">Хозблок</span></div><div class="price">от 50 000 ₽</div></div></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ ГЕОГРАФИЯ ============ -->
+<section id="area" class="pad-lg divider">
+  <div class="wrap area-grid">
+    <div class="reveal">
+      <span class="eyebrow">Зона выезда</span>
+      <h2 class="section-title" style="margin-bottom:18px;">Работаем в Москве и Московской области</h2>
+      <p class="lead">Выезжаем на бесплатный замер по всей Москве и Московской области — звоните, уточним сроки выезда именно в ваш район.</p>
+      <ul class="area-list">
+        <li>Москва (все округа)</li>
+        <li>Одинцовский округ</li>
+        <li>Мытищи</li>
+        <li>Красногорск</li>
+        <li>Балашиха</li>
+        <li>Домодедово</li>
+        <li>Подольск</li>
+        <li>Химки</li>
+      </ul>
+      <a class="btn btn-outline" href="tel:+79672756333">Уточнить по телефону</a>
+    </div>
+    <div class="ph map-ph reveal"><div class="tag-inner"><span class="ph-label">Карта зоны выезда</span></div></div>
+  </div>
+</section>
+
+<!-- ============ ОТЗЫВЫ ============ -->
+<section id="reviews" class="pad-lg divider">
+  <div class="wrap">
+    <span class="eyebrow reveal">Отзывы клиентов с <a href="https://uslugi.yandex.ru/profile/RuslanAndreevichS-2360950" target="_blank" rel="noopener">Яндекс.Услуг</a></span>
+    <h2 class="section-title reveal">Что говорят о нашей работе</h2>
+
+    <div class="rating-band reveal">
+      <div class="stat"><b>4.8 / 5</b><span>Средний рейтинг</span></div>
+      <div class="stat"><b>89</b><span>Оценок клиентов</span></div>
+    </div>
+
+    <div class="reviews-carousel reveal" id="reviewsCarousel">
+      <div class="review-pages">
+      <div class="review-page is-active" data-review-page="0">
+<article class="review-card">
+        <span class="quote-mark">"</span>
+        <div class="review-head">
+          <div>
+            <div class="review-name">Марина М.</div>
+            <div class="stars">Оценка 5 из 5</div>
+          </div>
+        </div>
+        <p class="review-text">Добрый день, заявку выполнили за один день, все быстро и четко. Работы по восстановлению бетонных блоков, поднятие домкратом</p>
+        <div class="review-meta"><a href="https://reviews.yandex.ru/user/tbrngk4a8568a2fg19fakvcg3m?main_tab=org" target="_blank" rel="noopener">Яндекс.Услуги</a> · 23.07.2026</div>
+      </article>
+<article class="review-card">
+        <span class="quote-mark">"</span>
+        <div class="review-head">
+          <div>
+            <div class="review-name">Анастасия Гущина</div>
+            <div class="stars">Оценка 5 из 5</div>
+          </div>
+        </div>
+        <p class="review-text">Спасибо за помощь в герметизации окна. Все быстро и четко . спасибо большое</p>
+        <div class="review-meta"><a href="https://reviews.yandex.ru/user/ppu3v3gmkdn3hnhtpztdm4uzu8?main_tab=org" target="_blank" rel="noopener">Яндекс.Услуги</a> · 26.03.2026</div>
+      </article>
+<article class="review-card">
+        <span class="quote-mark">"</span>
+        <div class="review-head">
+          <div>
+            <div class="review-name">Евгений Никишин</div>
+            <div class="stars">Оценка 5 из 5</div>
+          </div>
+        </div>
+        <p class="review-text">Сделали все очень быстро, учли мои пожелания. Плитка лежит ровно, швы замазали. Работой доволен.</p>
+        <div class="review-meta"><a href="https://reviews.yandex.ru/user/7e2aag714jr3dgpqzag56zfz1g?main_tab=org" target="_blank" rel="noopener">Яндекс.Услуги</a> · 31.08.2025</div>
+      </article>
+<article class="review-card">
+        <span class="quote-mark">"</span>
+        <div class="review-head">
+          <div>
+            <div class="review-name">Денис И.</div>
+            <div class="stars">Оценка 5 из 5</div>
+          </div>
+        </div>
+        <p class="review-text">Огромное спасибо за чистку кондиционера!</p>
+        <div class="review-meta"><a href="https://reviews.yandex.ru/user/mad0vhegg7xf6wxfmzq1wf7eym?main_tab=org" target="_blank" rel="noopener">Яндекс.Услуги</a> · 05.06.2025</div>
+      </article>
+<article class="review-card">
+        <span class="quote-mark">"</span>
+        <div class="review-head">
+          <div>
+            <div class="review-name">Иван Соколов</div>
+            <div class="stars">Оценка 5 из 5</div>
+          </div>
+        </div>
+        <p class="review-text">Руслан хороший исполнитель, Делал монтаж крыши из металлочерепицы мне в доме, очень понравился сделанный результат. Все выполнено шикарно прям так как я хотел</p>
+        <div class="review-meta"><a href="https://reviews.yandex.ru/user/5k5z8pcujwtma49nu5bn4qdyh8?main_tab=org" target="_blank" rel="noopener">Яндекс.Услуги</a> · 13.04.2025</div>
+      </article>
+<article class="review-card">
+        <span class="quote-mark">"</span>
+        <div class="review-head">
+          <div>
+            <div class="review-name">Андрей Федоров</div>
+            <div class="stars">Оценка 5 из 5</div>
+          </div>
+        </div>
+        <p class="review-text">Руслан строил свайный фундамент . Работали слаженно, все сваи установлены ровно и надежно. Теперь я уверен в прочности своего будущего дома! Рекомендую этих специалистов, если вам нужен качественный свайный фундамент!</p>
+        <div class="review-meta"><a href="https://reviews.yandex.ru/user/jr8qmw0nhzw2jr092qvk4y03e4?main_tab=org" target="_blank" rel="noopener">Яндекс.Услуги</a> · 11.04.2025</div>
+      </article>
+<article class="review-card">
+        <span class="quote-mark">"</span>
+        <div class="review-head">
+          <div>
+            <div class="review-name">Чернов Константин</div>
+            <div class="stars">Оценка 5 из 5</div>
+          </div>
+        </div>
+        <p class="review-text">Руслан отлично смонтировал крышу из металлочерепицы! Быстро, качественно и профессионально. Аккуратные и вежливые мастера. Рекомендую! Крыша выглядит отлично!</p>
+        <div class="review-meta"><a href="https://reviews.yandex.ru/user/x48w299u354c4nwfpdegzwwb80?main_tab=org" target="_blank" rel="noopener">Яндекс.Услуги</a> · 07.04.2025</div>
+      </article>
+<article class="review-card">
+        <span class="quote-mark">"</span>
+        <div class="review-head">
+          <div>
+            <div class="review-name">Александр Богачев</div>
+            <div class="stars">Оценка 5 из 5</div>
+          </div>
+        </div>
+        <p class="review-text">Ребята настоящие мастера! Построили отличную баню быстро и качественно. Всё сделали аккуратно, парилка нагревается моментально и держит тепло долго. Цена адекватная, всем доволен. Теперь у меня есть отличное место для отдыха и оздоровления! Рекомендую!</p>
+        <div class="review-meta"><a href="https://reviews.yandex.ru/user/f1y1tbd3k9ufejpz9p8m3re3rm?main_tab=org" target="_blank" rel="noopener">Яндекс.Услуги</a> · 05.04.2025</div>
+      </article>
+      </div>
+      <div class="review-page" data-review-page="1">
+<article class="review-card">
+        <span class="quote-mark">"</span>
+        <div class="review-head">
+          <div>
+            <div class="review-name">Дмитрий Гурьев</div>
+            <div class="stars">Оценка 5 из 5</div>
+          </div>
+        </div>
+        <p class="review-text">Я остался в полном восторге от работы бригады, которая перекрыла крышу моего дома! От начала и до конца – все прошло идеально, профессионально и с вниманием к деталям. Огромное вам спасибо буду вас рекомендовать</p>
+        <div class="review-meta"><a href="https://reviews.yandex.ru/user/dh40n3weqgdkzc4mbyyf4rdc40?main_tab=org" target="_blank" rel="noopener">Яндекс.Услуги</a> · 03.03.2025</div>
+      </article>
+<article class="review-card">
+        <span class="quote-mark">"</span>
+        <div class="review-head">
+          <div>
+            <div class="review-name">Иван Шлеповский</div>
+            <div class="stars">Оценка 5 из 5</div>
+          </div>
+        </div>
+        <p class="review-text">Строили гараж с бригадой, материал подобрали качественный. Прошло уже 3 месяца с постройки и все шикарно, внутри уютно и мест также много. Цену не заломили даже оказалось дешевле чем я думал, огромное вам спасибо Руслан!</p>
+        <div class="review-meta"><a href="https://reviews.yandex.ru/user/27ymq5h3kdfw8q1e8pfajcqgp0?main_tab=org" target="_blank" rel="noopener">Яндекс.Услуги</a> · 27.02.2025</div>
+      </article>
+<article class="review-card">
+        <span class="quote-mark">"</span>
+        <div class="review-head">
+          <div>
+            <div class="review-name">Сергей Яковленченко</div>
+            <div class="stars">Оценка 5 из 5</div>
+          </div>
+        </div>
+        <p class="review-text">Выбрали этого мастера чтобы он построил нам забор, выехал с бригадой в обговоренный срок и сделал также все быстро, забор очень красивый и качественный. Все понравилось, цены ниже чем у других. Рекомендую</p>
+        <div class="review-meta"><a href="https://reviews.yandex.ru/user/aqvnxejfjyeyrtne6px0d5yumw?main_tab=org" target="_blank" rel="noopener">Яндекс.Услуги</a> · 21.02.2025</div>
+      </article>
+<article class="review-card">
+        <span class="quote-mark">"</span>
+        <div class="review-head">
+          <div>
+            <div class="review-name">Леонид Ботулев</div>
+            <div class="stars">Оценка 5 из 5</div>
+          </div>
+        </div>
+        <p class="review-text">Делали нам монтаж кровли, после долгих поисков бригады остановился на Руслане и его бригаде. Приятные и общительные рабочие, всегда подскажут или помогут если попросить. Цены за работу оправданные и приемлемые, огромное вам спасибо. Всем советую!</p>
+        <div class="review-meta"><a href="https://reviews.yandex.ru/user/zv0ydegyrvg9m9hk7gyx0anbj4?main_tab=org" target="_blank" rel="noopener">Яндекс.Услуги</a> · 13.02.2025</div>
+      </article>
+<article class="review-card">
+        <span class="quote-mark">"</span>
+        <div class="review-head">
+          <div>
+            <div class="review-name">Светлана Викторовна</div>
+            <div class="stars">Оценка 5 из 5</div>
+          </div>
+        </div>
+        <p class="review-text">Заказывал строительство русской бани, обговорили все моменты и мои желания. После этого бригада приехала и приступила к своей работе. Работали быстро, качественно и без лишнего шума. Были очень внимательны к деталям, следили за каждым этапом, что явно сказалось на результате. Всем советую этого исполнителя!</p>
+        <div class="review-meta"><a href="https://reviews.yandex.ru/user/b02229pfkh0nzv6x6350meqzjw?main_tab=org" target="_blank" rel="noopener">Яндекс.Услуги</a> · 08.02.2025</div>
+      </article>
+<article class="review-card">
+        <span class="quote-mark">"</span>
+        <div class="review-head">
+          <div>
+            <div class="review-name">Антон Филипцов</div>
+            <div class="stars">Оценка 5 из 5</div>
+          </div>
+        </div>
+        <p class="review-text">Руслан, спасибо за выполненную работу! Рад знакомству. Сделал все четко, быстро. Рад, что прислушался к твоему мнению, как все лучше сделать - полы теперь не только греют, как говорится, но и радуют глаз. Качественная работа! Исполнителю смело можно доверять.</p>
+        <div class="review-meta"><a href="https://reviews.yandex.ru/user/9627gymqydubmdr8n3njd1d7r8?main_tab=org" target="_blank" rel="noopener">Яндекс.Услуги</a> · 30.01.2025</div>
+      </article>
+<article class="review-card">
+        <span class="quote-mark">"</span>
+        <div class="review-head">
+          <div>
+            <div class="review-name">Михаил Алексеев</div>
+            <div class="stars">Оценка 5 из 5</div>
+          </div>
+        </div>
+        <p class="review-text">Со своей командой делали мне остекление лоджии, все сделали вовремя и качественно! высокая отзывчивость и понимающие сотрудники) Обращусь к вам еще</p>
+        <div class="review-meta"><a href="https://reviews.yandex.ru/user/hkhapymfzqhpfmyq2hmwtfk150?main_tab=org" target="_blank" rel="noopener">Яндекс.Услуги</a> · 08.10.2024</div>
+      </article>
+<article class="review-card">
+        <span class="quote-mark">"</span>
+        <div class="review-head">
+          <div>
+            <div class="review-name">Георгий Русланович</div>
+            <div class="stars">Оценка 5 из 5</div>
+          </div>
+        </div>
+        <p class="review-text">Все прошло хорошо, идеальная бригада. Качественно выполнят работу, спасибо вам!</p>
+        <div class="review-meta"><a href="https://reviews.yandex.ru/user/qjppy3g7jce595npw0qbezdu9m?main_tab=org" target="_blank" rel="noopener">Яндекс.Услуги</a> · 06.10.2024</div>
+      </article>
+      </div>
+      <div class="review-page" data-review-page="2">
+<article class="review-card">
+        <span class="quote-mark">"</span>
+        <div class="review-head">
+          <div>
+            <div class="review-name">Владимиров О.</div>
+            <div class="stars">Оценка 5 из 5</div>
+          </div>
+        </div>
+        <p class="review-text">Мастера от бога!!! Делали мне укладку утеплителя кровли и все прошло ну просто отлично! Никаких проблем во время работы не возникло. Все было сделано идеально и шикарно</p>
+        <div class="review-meta"><a href="https://reviews.yandex.ru/user/xhwb57me6kgtu2wdu85kw91ncm?main_tab=org" target="_blank" rel="noopener">Яндекс.Услуги</a> · 27.09.2024</div>
+      </article>
+<article class="review-card">
+        <span class="quote-mark">"</span>
+        <div class="review-head">
+          <div>
+            <div class="review-name">Николай</div>
+            <div class="stars">Оценка 5 из 5</div>
+          </div>
+        </div>
+        <p class="review-text">Делали монтаж кровли. Рабочие очень добрые и приветливые, ранее в прошлом году также работал с ними (делали кровлю из металлочерепицы моему брату). Работу сделали качественно и хорошо, цена в пределах нормы. Всем сердцем советую их!</p>
+        <div class="review-meta"><a href="https://reviews.yandex.ru/user/ckxm7qngfy79auxb5yhejpzxug?main_tab=org" target="_blank" rel="noopener">Яндекс.Услуги</a> · 25.09.2024</div>
+      </article>
+<article class="review-card">
+        <span class="quote-mark">"</span>
+        <div class="review-head">
+          <div>
+            <div class="review-name">Александр Евтушенко</div>
+            <div class="stars">Оценка 5 из 5</div>
+          </div>
+        </div>
+        <p class="review-text">Прелестные мастера у которых за спиной много долгих лет опыта. Делают свою работу полностью без каких либо проблем, ни одного косяка! Сам Руслан человек общительный и пунктуальный сказал-сделал. Монтаж кровли был организован и выполненен хорошо.</p>
+        <div class="review-meta"><a href="https://reviews.yandex.ru/user/0jxgghq3v0cwb3a0y022zfzbmg?main_tab=org" target="_blank" rel="noopener">Яндекс.Услуги</a> · 20.09.2024</div>
+      </article>
+<article class="review-card">
+        <span class="quote-mark">"</span>
+        <div class="review-head">
+          <div>
+            <div class="review-name">Арсен Кучков</div>
+            <div class="stars">Оценка 5 из 5</div>
+          </div>
+        </div>
+        <p class="review-text">Ремонт кровли выполнен отлично. Работу сделал профессионально. Мне всё понравилось. Я доволен. Спасибо! Ремонт кровли (https://uslugi.yandex.ru/order/a829070a-2b6b-4950-8e5f-42aee24cd186)</p>
+        <div class="review-meta"><a href="https://reviews.yandex.ru/user/q4ng3wk2zq8djfx7706kx71wt8?main_tab=org" target="_blank" rel="noopener">Яндекс.Услуги</a> · 20.09.2024</div>
+      </article>
+<article class="review-card">
+        <span class="quote-mark">"</span>
+        <div class="review-head">
+          <div>
+            <div class="review-name">Рамиль</div>
+            <div class="stars">Оценка 5 из 5</div>
+          </div>
+        </div>
+        <p class="review-text">Поставили в квартиру окна. Результатом я остался доволен и рад. Все было сделано настоящими профессионалами, все стоит крепко и красиво, благодарю вас!</p>
+        <div class="review-meta"><a href="https://reviews.yandex.ru/user/c63mcuz7c12yvvdhtdr9bhhw88?main_tab=org" target="_blank" rel="noopener">Яндекс.Услуги</a> · 18.09.2024</div>
+      </article>
+<article class="review-card">
+        <span class="quote-mark">"</span>
+        <div class="review-head">
+          <div>
+            <div class="review-name">Игнатов Ф.</div>
+            <div class="stars">Оценка 5 из 5</div>
+          </div>
+        </div>
+        <p class="review-text">Нуждался в шлифовке сруба. Пришёл к Руслану и мы назначили день в который начнём работу. Руслан со своей бригадой присупил к работе, спустя время в назначенный срок она была выполнена. Могу сказать Что Руслан всегда доделает работу на 100% и не подведёт.</p>
+        <div class="review-meta"><a href="https://reviews.yandex.ru/user/gzmx6h3ngt101tc5w91yqqh34m?main_tab=org" target="_blank" rel="noopener">Яндекс.Услуги</a> · 18.09.2024</div>
+      </article>
+<article class="review-card">
+        <span class="quote-mark">"</span>
+        <div class="review-head">
+          <div>
+            <div class="review-name">Гриша</div>
+            <div class="stars">Оценка 5 из 5</div>
+          </div>
+        </div>
+        <p class="review-text">Положили мне ламинат дома, я считаю что это идеальный выбор) Мастер сделал все по красоте! Я остался доволен работой Руслана, цена даже очень приятная. Однозначно рекомендую</p>
+        <div class="review-meta"><a href="https://reviews.yandex.ru/user/d0606wkv6vajpnw2eapqqbjar4?main_tab=org" target="_blank" rel="noopener">Яндекс.Услуги</a> · 16.09.2024</div>
+      </article>
+<article class="review-card">
+        <span class="quote-mark">"</span>
+        <div class="review-head">
+          <div>
+            <div class="review-name">Романов Д.</div>
+            <div class="stars">Оценка 5 из 5</div>
+          </div>
+        </div>
+        <p class="review-text">С начала года я по немногу копил на капитальный ремонт квартиры, и вот наконец я накопил) Обратился сюда к этому специалисту, обговорили все детали и ньюансы и они приступили к работе. Работа была выполнена, мне очень понравилось выглядет эстетично и аккуратно! Всем советую</p>
+        <div class="review-meta"><a href="https://reviews.yandex.ru/user/gwmq2ycc1p71zgx8e7xkrrp520?main_tab=org" target="_blank" rel="noopener">Яндекс.Услуги</a> · 16.09.2024</div>
+      </article>
+      </div>
+      <div class="review-page" data-review-page="3">
+<article class="review-card">
+        <span class="quote-mark">"</span>
+        <div class="review-head">
+          <div>
+            <div class="review-name">Пилипенко София</div>
+            <div class="stars">Оценка 5 из 5</div>
+          </div>
+        </div>
+        <p class="review-text">Руслан отлично справился со своей работой. Закончил в срок и качественно. Осталось очень хорошее впечатление об этом специалисте. Работу выполняет профессионально. Неприятных моментов и сюрпризов не было. Накладок не было. Сделали всё хорошо. Спасибо</p>
+        <div class="review-meta"><a href="https://reviews.yandex.ru/user/bb4ampvvcfgv71pu85166ddqhw?main_tab=org" target="_blank" rel="noopener">Яндекс.Услуги</a> · 01.08.2024</div>
+      </article>
+<article class="review-card">
+        <span class="quote-mark">"</span>
+        <div class="review-head">
+          <div>
+            <div class="review-name">Artem Mikhirev</div>
+            <div class="stars">Оценка 5 из 5</div>
+          </div>
+        </div>
+        <p class="review-text">Покрасил мой дачный домик быстро и качественно. Всë чётко и по делу. Работу выполнили за один день. Сказал-сделал. Мастер настоящий профессионал. Домик выглядит отлично. Краска легла ровно. Всë очень понравилось. Домик как новый!</p>
+        <div class="review-meta"><a href="https://reviews.yandex.ru/user/bp1hnbmypxp5dq37bajyaayz6g?main_tab=org" target="_blank" rel="noopener">Яндекс.Услуги</a> · 29.07.2024</div>
+      </article>
+<article class="review-card">
+        <span class="quote-mark">"</span>
+        <div class="review-head">
+          <div>
+            <div class="review-name">Ксюша Матвеева</div>
+            <div class="stars">Оценка 5 из 5</div>
+          </div>
+        </div>
+        <p class="review-text">У меня был гараж, надо было сделать внутреннюю отделку. Обратилась к Руслану за помощью. Сразу откликнулся. Всё сделал качественно. Очень понравилось!</p>
+        <div class="review-meta"><a href="https://reviews.yandex.ru/user/9b8x8y8y4yt6dv9ee6yjhv8whg?main_tab=org" target="_blank" rel="noopener">Яндекс.Услуги</a> · 27.07.2024</div>
+      </article>
+<article class="review-card">
+        <span class="quote-mark">"</span>
+        <div class="review-head">
+          <div>
+            <div class="review-name">Рина</div>
+            <div class="stars">Оценка 5 из 5</div>
+          </div>
+        </div>
+        <p class="review-text">Сделали мне отличную открытую летнюю террасу. Сработано все профессионально. При работе неприятных инцидентов не было. Всё прошло успешно! Итог нам понравился очень. Терасса вышла хорошая, красивая. Как и хотелось. Спасибо, ребята!</p>
+        <div class="review-meta"><a href="https://reviews.yandex.ru/user/76rva5z0mn99tyj6vhpxn0zg5r?main_tab=org" target="_blank" rel="noopener">Яндекс.Услуги</a> · 25.07.2024</div>
+      </article>
+<article class="review-card">
+        <span class="quote-mark">"</span>
+        <div class="review-head">
+          <div>
+            <div class="review-name">Олеся Румянцева</div>
+            <div class="stars">Оценка 5 из 5</div>
+          </div>
+        </div>
+        <p class="review-text">Нам требовался ремонт печи. По совету знакомых обратились к Руслану. Ремонт печи зделал отлично. Функционирует хорошо, тяга отличная, все работает исправно. Работа выполнена качественно. Спасибо!</p>
+        <div class="review-meta"><a href="https://reviews.yandex.ru/user/35yb18dpmrqthnbgvuy5wh3ta0?main_tab=org" target="_blank" rel="noopener">Яндекс.Услуги</a> · 23.07.2024</div>
+      </article>
+<article class="review-card">
+        <span class="quote-mark">"</span>
+        <div class="review-head">
+          <div>
+            <div class="review-name">Matvei</div>
+            <div class="stars">Оценка 5 из 5</div>
+          </div>
+        </div>
+        <p class="review-text">Заказывал у этого мастера хозблок 2 x 3. Привезли и установили всё аккуратно, качественно и быстро. Всё от оформления заказа до установки прошло замечательно. Рекомендую!</p>
+        <div class="review-meta"><a href="https://reviews.yandex.ru/user/587x4mgke3cjmrfh0cnd549xjw?main_tab=org" target="_blank" rel="noopener">Яндекс.Услуги</a> · 22.07.2024</div>
+      </article>
+<article class="review-card">
+        <span class="quote-mark">"</span>
+        <div class="review-head">
+          <div>
+            <div class="review-name">Kiutty Line</div>
+            <div class="stars">Оценка 5 из 5</div>
+          </div>
+        </div>
+        <p class="review-text">Мастер сделал мне отличную пристройку к дому 3 ×4. Сроки соблюдены. Нужные материалы завёз сам. Результат мне очень понравился. Однозначно буду его рекомендовать и обращусь ещё!</p>
+        <div class="review-meta"><a href="https://reviews.yandex.ru/user/b54uah2c5ayrw2xk8z9uyyznk8?main_tab=org" target="_blank" rel="noopener">Яндекс.Услуги</a> · 17.07.2024</div>
+      </article>
+<article class="review-card">
+        <span class="quote-mark">"</span>
+        <div class="review-head">
+          <div>
+            <div class="review-name">Семен Авдеев</div>
+            <div class="stars">Оценка 5 из 5</div>
+          </div>
+        </div>
+        <p class="review-text">Я очень доволен результатом работы Руслана. Установил забор и распашные ворота. Всё было сделано в заявленные сроки. Результатом мы довольны. Спасибо!</p>
+        <div class="review-meta"><a href="https://reviews.yandex.ru/user/awzv21gdd3b7jw31483qwrnvcr?main_tab=org" target="_blank" rel="noopener">Яндекс.Услуги</a> · 09.07.2024</div>
+      </article>
+      </div>
+      <div class="review-page" data-review-page="4">
+<article class="review-card">
+        <span class="quote-mark">"</span>
+        <div class="review-head">
+          <div>
+            <div class="review-name">A Васнецов</div>
+            <div class="stars">Оценка 5 из 5</div>
+          </div>
+        </div>
+        <p class="review-text">Здравствуйте! Мы с женой очень довольна Русланом. Заказывали его бригаду чтобы выполнил определённые работы. Всё сделал на отлично! Даже не ожидали такого результата. Цена соответствует заявленной. Обязательно будем рекомендовать!</p>
+        <div class="review-meta"><a href="https://reviews.yandex.ru/user/xknqrka252efdvwqgquutg0eh4?main_tab=org" target="_blank" rel="noopener">Яндекс.Услуги</a> · 08.07.2024</div>
+      </article>
+<article class="review-card">
+        <span class="quote-mark">"</span>
+        <div class="review-head">
+          <div>
+            <div class="review-name">Валерка Лагунов</div>
+            <div class="stars">Оценка 5 из 5</div>
+          </div>
+        </div>
+        <p class="review-text">Мастер сделал нам цоколь и залил вокруг дома хорошую отмостку. Результат на 5+! Мы очень довольны! Будем его рекомендовать и обратимся ещё!</p>
+        <div class="review-meta"><a href="https://reviews.yandex.ru/user/qmq6hkn2ky5yn8fta00cbdwem4?main_tab=org" target="_blank" rel="noopener">Яндекс.Услуги</a> · 07.07.2024</div>
+      </article>
+<article class="review-card">
+        <span class="quote-mark">"</span>
+        <div class="review-head">
+          <div>
+            <div class="review-name">Маргарита Иванова</div>
+            <div class="stars">Оценка 5 из 5</div>
+          </div>
+        </div>
+        <p class="review-text">Во время дождей крыша сильно протекала. Обратилась к Руслану за помощью. Приехал, устранил дефекты, сделал отличный ремонт, заменил местами ондулин. Всё сделал быстро. Крыша теперь не течёт. Спасибо большое! Я довольна!</p>
+        <div class="review-meta"><a href="https://reviews.yandex.ru/user/2e9x0deyatfnqqk9n3ypqnt9m8?main_tab=org" target="_blank" rel="noopener">Яндекс.Услуги</a> · 01.07.2024</div>
+      </article>
+<article class="review-card">
+        <span class="quote-mark">"</span>
+        <div class="review-head">
+          <div>
+            <div class="review-name">Антон</div>
+            <div class="stars">Оценка 5 из 5</div>
+          </div>
+        </div>
+        <p class="review-text">Руслан установил мне забор вокруг дома 100 м. Сделал быстро. Результатом доволен. Спасибо огромное! В дальнейшем обратимся ещё.</p>
+        <div class="review-meta"><a href="https://reviews.yandex.ru/user/q49uw65tvh6kmuv0py3yqp13pg?main_tab=org" target="_blank" rel="noopener">Яндекс.Услуги</a> · 30.06.2024</div>
+      </article>
+<article class="review-card">
+        <span class="quote-mark">"</span>
+        <div class="review-head">
+          <div>
+            <div class="review-name">Сергей Кузовлев</div>
+            <div class="stars">Оценка 5 из 5</div>
+          </div>
+        </div>
+        <p class="review-text">Руслан установил мне хозблок 2×3. Всё сделал быстро и качественно. Как договаривались. Результат отличный. В дальнейшем обращусь к нему ещё по поводу строительства.</p>
+        <div class="review-meta"><a href="https://reviews.yandex.ru/user/xfxzgw8czfkrnxafyryp4nrnqw?main_tab=org" target="_blank" rel="noopener">Яндекс.Услуги</a> · 29.06.2024</div>
+      </article>
+      </div>
+      </div>
+
+      <div class="reviews-controls" aria-label="Навигация по отзывам">
+        <button class="review-nav" id="reviewsPrev" type="button" aria-label="Предыдущие отзывы">←</button>
+        <div class="review-dots" id="reviewDots">
+          <button class="review-dot is-active" type="button" data-review-page="0" aria-label="Отзывы, страница 1" aria-current="true"></button>
+          <button class="review-dot" type="button" data-review-page="1" aria-label="Отзывы, страница 2" aria-current="false"></button>
+          <button class="review-dot" type="button" data-review-page="2" aria-label="Отзывы, страница 3" aria-current="false"></button>
+          <button class="review-dot" type="button" data-review-page="3" aria-label="Отзывы, страница 4" aria-current="false"></button>
+          <button class="review-dot" type="button" data-review-page="4" aria-label="Отзывы, страница 5" aria-current="false"></button>
+        </div>
+        <button class="review-nav" id="reviewsNext" type="button" aria-label="Следующие отзывы">→</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ГАРАНТИИ<!-- ============ ГАРАНТИИ ============ -->
+<section id="guarantees" class="pad-lg divider">
+  <div class="wrap">
+    <span class="eyebrow reveal">Работаем открыто</span>
+    <h2 class="section-title reveal" style="margin-bottom:28px;">Гарантии</h2>
+      <div class="guarantee-grid reveal">
+      <div class="guarantee-item"><h3>Проверенный персонал</h3><p>Идентификация и опыт сотрудников подтверждены.</p></div>
+      <div class="guarantee-item"><h3>Договор</h3><p>Официальный договор подряда на каждый объект.</p></div>
+      <div class="guarantee-item"><h3>Гарантия</h3><p>На все виды выполненных работ.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq" class="pad-lg divider">
+  <div class="wrap">
+    <span class="eyebrow reveal">Вопросы и ответы</span>
+    <h2 class="section-title reveal" style="margin-bottom:28px;">Частые вопросы</h2>
+
+    <div class="faq-list reveal" id="faqList">
+      <div class="faq-item open">
+        <button class="faq-q" type="button"><h3>Сколько стоит выезд на замер?</h3><span class="plus">+</span></button>
+        <div class="faq-a"><p>Бесплатно, в любую точку зоны выезда.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button"><h3>Как формируется итоговая цена?</h3><span class="plus">+</span></button>
+        <div class="faq-a"><p>Считаем по факту объекта на замере и фиксируем в договоре — цена не меняется в процессе работ.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button"><h3>Какие гарантии вы даёте?</h3><span class="plus">+</span></button>
+        <div class="faq-a"><p>Гарантия на все выполненные работы, прописана в договоре.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button"><h3>Работаете ли вы по договору?</h3><span class="plus">+</span></button>
+        <div class="faq-a"><p>Да, на каждый объект заключаем официальный договор подряда со сроками и сметой.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button"><h3>Как быстро вы можете начать работы?</h3><span class="plus">+</span></button>
+        <div class="faq-a"><p>Выезд на замер — обычно в день обращения, к работам приступаем по согласованному графику.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button"><h3>Можно ли рассчитаться после завершения работ?</h3><span class="plus">+</span></button>
+        <div class="faq-a"><p>Условия оплаты фиксируются в договоре и обсуждаются индивидуально на этапе замера.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ФИНАЛЬНЫЙ CTA ============ -->
+<section class="final-cta dark pad-lg" id="contacts">
+  <div class="wrap final-grid">
+    <div class="reveal">
+      <span class="eyebrow">Готовы обсудить объект?</span>
+      <h2>Оставьте заявку на бесплатный замер</h2>
+      <p class="lead" style="margin-top:18px;">Перезвоним в течение 15 минут, с 7:00 до 23:00. Работаем по Москве и Московской области.</p>
+    </div>
+
+    <div class="calc-box reveal">
+      <p class="calc-note">Оставьте контакты — согласуем удобное время выезда</p>
+      <div class="calc-contact" style="display:flex;">
+        <input type="text" placeholder="Ваше имя">
+        <input type="tel" placeholder="+7 967 275 63 33">
+      </div>
+      <div class="calc-actions">
+        <button class="btn btn-invert" type="button">Отправить заявку <span class="arrow">→</span></button>
+        <a class="btn btn-outline" href="tel:+79672756333">Позвонить сейчас</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-statement">Течёт крыша? Стройка встала? Приедем и решим.</div>
+    <div class="footer-grid">
+      <div>
+        <h4>СтройПрофи</h4>
+        <p>Строительная бригада полного цикла.<br>Москва и Московская область.<br>Работаем по договору. Даём гарантию.</p>
+        <p style="margin-top:12px;"><strong class="mono">Рейтинг 4.8</strong> (89 оценок)</p>
+      </div>
+      <div>
+        <h4>Услуги</h4>
+        <ul>
+          <li>Кровля</li>
+          <li>Полы</li>
+          <li>Фасад</li>
+          <li>Строительство домов</li>
+          <li>Бани и хозблоки</li>
+          <li>Заборы, фундамент, гаражи</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Контакты</h4>
+        <ul>
+          <li><a href="tel:+79672756333" style="text-decoration:none;">+7 967 275 63 33</a></li>
+          <li>Режим работы: 7:00–23:00</li>
+          <li>Москва и Московская область</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Разделы</h4>
+        <ul>
+          <li><a href="#calculator" style="text-decoration:none;">Услуги и цены</a></li>
+          <li><a href="#portfolio" style="text-decoration:none;">Наши работы</a></li>
+          <li><a href="#reviews" style="text-decoration:none;">Отзывы</a></li>
+          <li><a href="#contacts" style="text-decoration:none;">Контакты</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-policies">
+      <h4 style="text-transform:uppercase; font-family:var(--f-mono); font-size:10.5px; letter-spacing:0.06em; margin-bottom:14px;">Правовая информация</h4>
+      <div class="policy-links">
+        <button type="button" data-modal="policy-consent">Согласие на обработку персональных данных</button>
+        <button type="button" data-modal="policy-privacy">Политика конфиденциальности</button>
+        <button type="button" data-modal="policy-offer">Условия сотрудничества (публичная оферта)</button>
+        <button type="button" data-modal="policy-guarantee">Гарантийные обязательства</button>
+      </div>
+      <div class="footer-bottom">
+        <span>© СтройПрофи, 2026. Все цены ориентировочные, точная стоимость — после бесплатного замера.</span>
+        <span>Сайт не является публичной офертой.</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ МОДАЛЬНЫЕ ОКНА ПОЛИТИК ============ -->
+<div class="modal-overlay" id="modal-policy-consent">
+  <div class="modal-box">
+    <button class="modal-close" data-close-modal>×</button>
+    <h3>Согласие на обработку персональных данных</h3>
+    <p>Оставляя заявку на сайте, вы даёте согласие на обработку указанных персональных данных (имя, номер телефона) в целях связи с вами для расчёта стоимости и организации работ.</p>
+    <p>Обработка данных осуществляется с соблюдением требований Федерального закона № 152-ФЗ «О персональных данных». Данные не передаются третьим лицам, кроме случаев, предусмотренных законодательством РФ, и хранятся не дольше срока, необходимого для выполнения указанных целей.</p>
+    <p>Согласие может быть отозвано в любой момент по номеру телефона, указанному на сайте, либо путём направления соответствующего обращения. Отзыв согласия не влияет на законность обработки данных, произведённой до отзыва.</p>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-policy-privacy">
+  <div class="modal-box">
+    <button class="modal-close" data-close-modal>×</button>
+    <h3>Политика конфиденциальности</h3>
+    <p>Мы собираем только те данные, которые вы предоставляете добровольно через формы на сайте (имя и телефон), а также технические данные, необходимые для работы сайта (сведения о браузере, устройстве, IP-адресе, cookie-файлах).</p>
+    <p>Персональные данные используются исключительно для обратной связи, расчёта стоимости работ и организации выезда на объект. Мы не продаём и не передаём данные третьим лицам в рекламных целях.</p>
+    <p>Данные хранятся с соблюдением разумных мер технической и организационной защиты. Пользователь вправе запросить удаление своих данных, обратившись по контактному телефону, указанному на сайте.</p>
+    <p>Использование сайта означает согласие с настоящей политикой. При несогласии с условиями просим воздержаться от использования форм обратной связи на сайте.</p>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-policy-offer">
+  <div class="modal-box">
+    <button class="modal-close" data-close-modal>×</button>
+    <h3>Условия сотрудничества (публичная оферта)</h3>
+    <p>Работы выполняются на основании договора подряда, заключаемого после бесплатного выезда и замера объекта. Договор фиксирует перечень работ, сроки выполнения и итоговую стоимость.</p>
+    <p>Указанные на сайте цены являются ориентировочными («от») и не являются публичной офертой в значении ст. 437 Гражданского кодекса РФ — точная стоимость определяется индивидуально по объекту после осмотра.</p>
+    <p>Оплата, порядок расчётов и график выполнения работ согласовываются индивидуально и закрепляются в договоре подряда до начала работ. Изменение сроков и стоимости после подписания договора возможно только по обоюдному согласию сторон, оформленному письменно.</p>
+    <p>Заказчик вправе отказаться от заключения договора после замера без каких-либо обязательств, если условия договора его не устраивают.</p>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-policy-guarantee">
+  <div class="modal-box">
+    <button class="modal-close" data-close-modal>×</button>
+    <h3>Гарантийные обязательства</h3>
+    <p>На выполненные работы предоставляется гарантия, срок и условия которой фиксируются в договоре подряда индивидуально для каждого объекта в зависимости от вида и сложности работ.</p>
+    <p>Гарантия не распространяется на материалы заказчика, а также на дефекты, возникшие вследствие нарушения правил эксплуатации объекта, форс-мажорных обстоятельств или вмешательства третьих лиц после сдачи работ.</p>
+    <p>При обнаружении гарантийного случая заказчик обращается по контактному телефону, указанному на сайте; устранение недостатков производится в разумный срок, согласованный сторонами.</p>
+  </div>
+</div>
+
+<!-- ============ COOKIE-БАННЕР ============ -->
+<div class="cookie-banner" id="cookieBanner">
+  <div class="wrap cookie-inner">
+    <p>Мы используем файлы cookie для корректной работы сайта и аналитики посещаемости. Продолжая пользоваться сайтом, вы соглашаетесь с использованием cookie в соответствии с политикой конфиденциальности.</p>
+    <button class="btn btn-invert" id="cookieAccept" type="button">Понятно</button>
+  </div>
+</div>
+
+<script>
+  // ---- Header solid on scroll ----
+  var header = document.getElementById('siteHeader');
+  function updateHeader(){
+    if(window.scrollY > 40){ header.classList.add('solid'); }
+    else { header.classList.remove('solid'); }
+  }
+  window.addEventListener('scroll', updateHeader, {passive:true});
+  updateHeader();
+
+  // ---- Mobile menu ----
+  var menuTrigger = document.getElementById('menuTrigger');
+  var menuClose = document.getElementById('menuClose');
+  var mobileMenu = document.getElementById('mobileMenu');
+  menuTrigger.addEventListener('click', function(){ mobileMenu.classList.add('open'); document.body.style.overflow='hidden'; });
+  menuClose.addEventListener('click', function(){ mobileMenu.classList.remove('open'); document.body.style.overflow=''; });
+  mobileMenu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ mobileMenu.classList.remove('open'); document.body.style.overflow=''; });
+  });
+
+  // ---- Reveal on scroll ----
+  var revealEls = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){ entry.target.classList.add('in'); io.unobserve(entry.target); }
+      });
+    }, {threshold:0.12});
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  // ---- Калькулятор ----
+  document.querySelectorAll('#calcBtn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var section = btn.closest('section');
+      var checkboxes = section.querySelectorAll('.calc-item input[type="checkbox"]');
+      var areaField = section.querySelector('#calcAreaInput');
+      var area = areaField ? (parseFloat(areaField.value) || 0) : 0;
+      var total = 0;
+      checkboxes.forEach(function(cb){
+        if(cb.checked){
+          var price = parseFloat(cb.getAttribute('data-price')) || 0;
+          var unit = cb.getAttribute('data-unit');
+          if((unit === 'м²' || unit === 'пог.м') && area > 0){
+            total += price * area;
+          } else {
+            total += price;
+          }
+        }
+      });
+      var resultBox = section.querySelector('#calcResult');
+      var totalEl = section.querySelector('#calcTotal');
+      if(total > 0){
+        totalEl.textContent = 'от ' + total.toLocaleString('ru-RU') + ' ₽';
+        resultBox.classList.add('show');
+        var contact = section.querySelector('#calcContact');
+        if(contact){ contact.style.display = 'flex'; }
+      } else {
+        totalEl.textContent = 'Отметьте хотя бы одну услугу';
+        resultBox.classList.add('show');
+      }
+    });
+  });
+  // ---- Портфолио: только 15 фотографий, без "Показать ещё" ----
+  var filterRow = document.getElementById('filterRow');
+  var portfolioItems = Array.prototype.slice.call(document.querySelectorAll('#portfolioGrid .portfolio-item'));
+  var currentFilter = 'all';
+
+  function renderPortfolio(){
+    portfolioItems.forEach(function(item){
+      var cat = item.getAttribute('data-cat');
+      item.style.display = (currentFilter === 'all' || cat === currentFilter) ? '' : 'none';
+    });
+  }
+
+  if(filterRow){
+    filterRow.addEventListener('click', function(e){
+      if(!e.target.classList.contains('filter-pill')) return;
+      filterRow.querySelectorAll('.filter-pill').forEach(function(p){ p.classList.remove('active'); });
+      e.target.classList.add('active');
+      currentFilter = e.target.getAttribute('data-filter');
+      renderPortfolio();
+    });
+  }
+
+  renderPortfolio();
+
+  // ---- Показать ещё видео ----
+  var videoMoreBtn = document.getElementById('videoMoreBtn');
+  if(videoMoreBtn){
+    videoMoreBtn.addEventListener('click', function(){
+      document.querySelectorAll('#videoGrid .video-item.js-hidden').forEach(function(item){
+        item.classList.remove('js-hidden');
+      });
+      videoMoreBtn.style.display = 'none';
+    });
+  }
+
+  // ---- Карусель отзывов: 8 отзывов (4x2) на страницу ----
+  (function(){
+    var pages = Array.prototype.slice.call(document.querySelectorAll('#reviewsCarousel .review-page'));
+    var dots = Array.prototype.slice.call(document.querySelectorAll('#reviewDots .review-dot'));
+    var prev = document.getElementById('reviewsPrev');
+    var next = document.getElementById('reviewsNext');
+    if(!pages.length) return;
+
+    var current = 0;
+
+    function showReviewsPage(index){
+      current = (index + pages.length) % pages.length;
+      pages.forEach(function(page, i){
+        page.classList.toggle('is-active', i === current);
+      });
+      dots.forEach(function(dot, i){
+        var active = i === current;
+        dot.classList.toggle('is-active', active);
+        dot.setAttribute('aria-current', active ? 'true' : 'false');
+      });
+    }
+
+    if(prev) prev.addEventListener('click', function(){ showReviewsPage(current - 1); });
+    if(next) next.addEventListener('click', function(){ showReviewsPage(current + 1); });
+    dots.forEach(function(dot){
+      dot.addEventListener('click', function(){
+        showReviewsPage(parseInt(dot.getAttribute('data-review-page'), 10) || 0);
+      });
+    });
+
+    showReviewsPage(0);
+  })();
+
+  // ---- FAQ аккордеон ----
+  document.querySelectorAll('.faq-q').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var item = btn.closest('.faq-item');
+      var wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function(el){ el.classList.remove('open'); });
+      if(!wasOpen){ item.classList.add('open'); }
+    });
+  });
+
+  // ---- Модальные окна политик ----
+  document.querySelectorAll('[data-modal]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var modal = document.getElementById('modal-' + btn.getAttribute('data-modal'));
+      if(modal){ modal.classList.add('open'); }
+    });
+  });
+  document.querySelectorAll('.modal-overlay').forEach(function(overlay){
+    overlay.addEventListener('click', function(e){
+      if(e.target === overlay){ overlay.classList.remove('open'); }
+    });
+  });
+  document.querySelectorAll('[data-close-modal]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      btn.closest('.modal-overlay').classList.remove('open');
+    });
+  });
+
+  // ---- Cookie-баннер: показывать каждый 5-й заход на сайт ----
+  (function(){
+    var STORAGE_KEY = 'sg_visit_count';
+    var count = parseInt(localStorage.getItem(STORAGE_KEY) || '0', 10) + 1;
+    localStorage.setItem(STORAGE_KEY, String(count));
+
+    var banner = document.getElementById('cookieBanner');
+    if(count % 5 === 0){
+      banner.classList.add('show');
+    }
+    document.getElementById('cookieAccept').addEventListener('click', function(){
+      banner.classList.remove('show');
+    });
+  })();
+</script>
+
+</body>
+</html>
